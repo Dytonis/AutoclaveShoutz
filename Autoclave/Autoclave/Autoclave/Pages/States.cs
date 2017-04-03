@@ -80,6 +80,55 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.DateTrigger
                    },
                },
+            },
+            new Arizona
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_thepick",
+                        lotteryNameUI = "The Pick",
+                        state = new Pages.Arizona(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_fantasy5",
+                        lotteryNameUI = "Fantasy 5",
+                        state = new Pages.Arizona(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_pick3",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Arizona(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_5cardcash",
+                        lotteryNameUI = "5 Card Cash",
+                        state = new Pages.Arizona(),
+                        Action = LotteryDecodeAction.DateTrigger
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_allornothingday",
+                        lotteryNameUI = "All or Nothing",
+                        state = new Pages.Arizona(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.arizonalottery.com/",
+                        lotteryName = "arizona_allornothingeve",
+                        lotteryNameUI = "All or Nothing",
+                        state = new Pages.Arizona(),
+                    },
+                }
             }
         };
     }

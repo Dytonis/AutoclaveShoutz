@@ -37,7 +37,7 @@
             this.ActionMode = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.CommandLine = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -102,10 +102,11 @@
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(13, 121);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(847, 237);
+            this.richTextBox1.Size = new System.Drawing.Size(847, 238);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "Starting Autoclave\nCheckinglist:\n    Internet: ... True\n    Data: ... True\n\nAutoc" +
     "lave Started on Cycles Render\nStarting Cycle 1";
@@ -146,14 +147,18 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Cylces Render Time (minutes)";
             // 
-            // textBox2
+            // CommandLine
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.CommandLine.AcceptsReturn = true;
+            this.CommandLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(13, 365);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(847, 20);
-            this.textBox2.TabIndex = 9;
+            this.CommandLine.BackColor = System.Drawing.Color.LightGray;
+            this.CommandLine.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CommandLine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CommandLine.Location = new System.Drawing.Point(13, 359);
+            this.CommandLine.Name = "CommandLine";
+            this.CommandLine.Size = new System.Drawing.Size(847, 15);
+            this.CommandLine.TabIndex = 9;
             // 
             // Main
             // 
@@ -161,7 +166,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(98)))), ((int)(((byte)(102)))));
             this.ClientSize = new System.Drawing.Size(872, 447);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.CommandLine);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ActionMode);
@@ -190,7 +195,7 @@
         private System.Windows.Forms.ComboBox ActionMode;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox CommandLine;
     }
 }
 

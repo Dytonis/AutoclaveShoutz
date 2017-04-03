@@ -21,6 +21,11 @@ namespace Autoclave
             {
                 string a = "";
 
+                if(numbers == null)
+                {
+                    return "null";
+                }
+
                 foreach(string s in numbers)
                 {
                     a += s + " ";

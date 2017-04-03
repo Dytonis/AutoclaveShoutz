@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autoclave.cs" />
+    <Compile Include="Pages\Arizona.cs" />
     <Compile Include="Pages\States.cs" />
     <Compile Include="Pages\Maine.cs" />
     <Compile Include="Pages\State.cs" />

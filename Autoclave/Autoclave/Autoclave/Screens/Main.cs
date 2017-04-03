@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,7 +29,7 @@ namespace Autoclave
 
             ClearConsole();
 
-            
+            CommandLine.KeyDown += tb_KeyDown;
         }
 
         public void CyclesRenderFinished()
@@ -48,11 +49,14 @@ namespace Autoclave
 
             if (ActionMode.Text == "Slave" && NumbersList.Count > 0)
             {
+                BringToFront();
+
                 SequentialSlave slave = new SequentialSlave();
                 slave.Sequence = NumbersList;
                 slave.main = this;
                 slave.Show();
                 slave.LoadLottery(0);
+                slave.BringToFront();
 
                 this.BackColor = Color.Gray;
                 button1.Text = "RESUME FROM SLAVE";
@@ -180,6 +184,90 @@ namespace Autoclave
             catch
             {
                 AddToConsole("Cannot convert " + textBox1.Text + " to a number.");
+            }
+        }
+
+        public void tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string command = CommandLine.Text;
+                CommandLine.Text = "";
+                AddToConsole("> " + command);
+
+                string[] args = command.Split(new char[] { ' ' });
+
+                Thread t = new Thread(new ThreadStart(() =>
+                {
+                    switch (args[0])
+                    {
+                        case "date":
+
+                            foreach (Lottery l in States.AllStates.SelectMany(x => x.lotteries))
+                            {
+                                if(args.Length <= 1)
+                                {
+                                    AddToConsole("Unable to find lottery \' \'");
+                                    return;
+                                }
+
+                                if (l.lotteryName == args[1])
+                                {
+                                    l.LoadHtml(l.url);
+                                    IStateDecodable decode = l.state as IStateDecodable;
+                                    DateTime date = decode.GetLatestDate(l);
+
+                                    AddToConsole(date.ToLongDateString());
+
+                                    return;
+                                }
+                            }
+
+                            AddToConsole("Unable to find lottery \'" + args[1]+"\'");
+
+                            break;
+
+                        case "numbers":
+
+                            foreach (Lottery l in States.AllStates.SelectMany(x => x.lotteries))
+                            {
+                                if (args.Length <= 1)
+                                {
+                                    AddToConsole("Unable to find lottery \' \'");
+                                    return;
+                                }
+
+                                if (l.lotteryName == args[1])
+                                {
+                                    if (l.Action == LotteryDecodeAction.Decode)
+                                    {
+                                        l.LoadHtml(l.url);
+                                        IStateDecodable decode = l.state as IStateDecodable;
+                                        LotteryNumber num = decode.GetLatestNumbers(l);
+
+                                        AddToConsole(num.ToString(LotteryNumberStringTypes.Numbers));
+                                    }
+                                    else if (l.Action == LotteryDecodeAction.DateTrigger)
+                                    {
+                                        AddToConsole("Date Trigger Only");
+                                    }
+                                    return;
+                                }
+                            }
+
+                            AddToConsole("Unable to find lottery \'" + args[1] + "\'");
+
+                            break;
+
+                        default:
+
+                            AddToConsole("Invalid command \'" + args[0]+"\'");
+
+                            break;
+                    }
+                }));
+
+                t.Start();
             }
         }
     }
