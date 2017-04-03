@@ -58,6 +58,7 @@ namespace Autoclave
             }
             if (Running)
             {
+                watch.Reset();
                 watch.Start();
                 main.AddToConsole("Autoclave starting...");
                 ticker = new System.Timers.Timer(seconds * 1000);
@@ -66,6 +67,7 @@ namespace Autoclave
             }
             else
             {
+                watch.Reset();
                 watch.Stop();
                 main.AddToConsole("Autoclave stopping...");
                 ticker.Stop();
@@ -86,6 +88,7 @@ namespace Autoclave
             main.NumbersList.Clear();
             States.CachedURLS.Clear();
             watch.Stop();
+            watch.Reset();
 
             Thread t = new Thread(new ThreadStart(() =>
             {
@@ -143,11 +146,13 @@ namespace Autoclave
                 if (main.InvokeRequired)
                 {
                     main.BeginInvoke((MethodInvoker)delegate () { main.CyclesRenderFinished(); });
+                    watch.Reset();
                     watch.Start();
                 }
                 else
                 {
                     main.CyclesRenderFinished();
+                    watch.Reset();
                     watch.Start();
                 }
             }));
@@ -165,49 +170,71 @@ namespace Autoclave
 
         public void HandleUpdateIfNeeded(LotteryNumber num)
         {
-            string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            if (File.Exists(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html"))
+            try
             {
-                num.lottery.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
-                IStateDecodable decode = num.lottery.state as IStateDecodable;
-                LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
+                string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                if(!numold.numbers.Equals(num.numbers))
+                if (File.Exists(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html"))
                 {
-                    //no update
+                    num.lottery.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
+                    IStateDecodable decode = num.lottery.state as IStateDecodable;
+                    LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
+
+                    if (!numold.numbers.Equals(num.numbers))
+                    {
+                        //no update
+                    }
+                    else
+                    {
+                        main.NumbersList.Add(num);
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", num.lottery.html);
+                        main.AddToConsole("    ...Update found.");
+                    }
                 }
                 else
                 {
+                    Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
                     main.NumbersList.Add(num);
                     File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", num.lottery.html);
-                    main.AddToConsole("    ...Update found.");
+                    main.AddToConsole("    ...No record.");
                 }
             }
-            else
+            catch
             {
-                Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
-                main.NumbersList.Add(num);
-                File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", num.lottery.html);
-                main.AddToConsole("    ...No record.");
+                main.AddToConsole("Exception while running " + num.lottery.lotteryName);
             }
         }
         public void HandleDateTrigger(DateTime date, Lottery lot)
         {
-            string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            if (File.Exists(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html"))
+            try
             {
-                lot.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html");
-                IStateDecodable decode = lot.state as IStateDecodable;
-                DateTime dateold = decode.GetLatestDate(lot);
+                string path = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                if (date.Equals(dateold))
+                if (File.Exists(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html"))
                 {
-                    //no update
+                    lot.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html");
+                    IStateDecodable decode = lot.state as IStateDecodable;
+                    DateTime dateold = decode.GetLatestDate(lot);
+
+                    if (date.Equals(dateold))
+                    {
+                        //no update
+                    }
+                    else
+                    {
+                        main.NumbersList.Add(new LotteryNumber
+                        {
+                            date = date,
+                            lottery = lot,
+                            numbers = new string[] { "Date Trigger Only" },
+                        });
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", lot.html);
+                        main.AddToConsole("    ...Update found.");
+                    }
                 }
                 else
                 {
+                    Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
                     main.NumbersList.Add(new LotteryNumber
                     {
                         date = date,
@@ -215,20 +242,12 @@ namespace Autoclave
                         numbers = new string[] { "Date Trigger Only" },
                     });
                     File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", lot.html);
-                    main.AddToConsole("    ...Update found.");
+                    main.AddToConsole("    ...No record.");
                 }
             }
-            else
+            catch
             {
-                Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
-                main.NumbersList.Add(new LotteryNumber
-                {
-                    date = date,
-                    lottery = lot,
-                    numbers = new string[] { "Date Trigger Only" },
-                });
-                File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", lot.html);
-                main.AddToConsole("    ...No record.");
+                main.AddToConsole("Exception while running " + lot.lotteryName);
             }
         }
     }

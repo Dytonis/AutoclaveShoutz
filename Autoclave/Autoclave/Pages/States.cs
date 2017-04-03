@@ -218,7 +218,48 @@ namespace Autoclave.Pages
                        state = new Pages.California(),
                     },
                 }
-            }
+            },
+            new Colorado
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                       url = "https://www.coloradolottery.com/en/",
+                       lotteryName = "colorado_luckyforlife",
+                       lotteryNameUI = "Lucky for Life",
+                       state = new Pages.Colorado(),
+                   },
+                    new Lottery
+                    {
+                       url = "https://www.coloradolottery.com/en/",
+                       lotteryName = "colorado_lotto",
+                       lotteryNameUI = "Lotto",
+                       state = new Pages.Colorado(),
+                   },
+                    new Lottery
+                    {
+                       url = "https://www.coloradolottery.com/en/",
+                       lotteryName = "colorado_cash5",
+                       lotteryNameUI = "Cash 5",
+                       state = new Pages.Colorado(),
+                   },
+                    new Lottery
+                    {
+                       url = "https://www.coloradolottery.com/en/",
+                       lotteryName = "colorado_pick3day",
+                       lotteryNameUI = "Pick 3",
+                       state = new Pages.Colorado(),
+                   },
+                    new Lottery
+                    {
+                       url = "https://www.coloradolottery.com/en/",
+                       lotteryName = "colorado_pick3eve",
+                       lotteryNameUI = "Pick 3",
+                       state = new Pages.Colorado(),
+                   },
+                }
+            },
         };
     }
 }
