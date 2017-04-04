@@ -16,6 +16,8 @@ namespace Autoclave
         public double seconds = 1;
         public Main main;
 
+        public bool Cycling = false;
+
         private bool _running;
         public bool Running
         {
@@ -42,7 +44,7 @@ namespace Autoclave
 
         private void Update_Elapsed(object sender, ElapsedEventArgs e)
         {
-            if(Running)
+            if(Running && !Cycling)
                 main.AddToConsole((watch.ElapsedMilliseconds / 1000).ToString() + " seconds elapsed of " + seconds + ". (" + (((watch.ElapsedMilliseconds / 1000) / seconds) * 100).ToString(".##") + "%)");
         }
 
@@ -142,6 +144,7 @@ namespace Autoclave
                 }
 
                 ticker.Start();
+                Cycling = false;
 
                 if (main.InvokeRequired)
                 {
@@ -161,6 +164,7 @@ namespace Autoclave
             {
                 ticker.Stop();
                 t.Start();
+                Cycling = true;
             }
             catch
             {
@@ -176,18 +180,20 @@ namespace Autoclave
 
                 if (File.Exists(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html"))
                 {
+                    //save the new html
+                    string writeHTML = num.lottery.html;
                     num.lottery.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
                     IStateDecodable decode = num.lottery.state as IStateDecodable;
                     LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
 
-                    if (!numold.numbers.Equals(num.numbers))
+                    if (numold.numbers.Equals(num.numbers) || numold.date == num.date)
                     {
                         //no update
                     }
                     else
                     {
                         main.NumbersList.Add(num);
-                        File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", num.lottery.html);
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
                         main.AddToConsole("    ...Update found.");
                     }
                 }
@@ -212,6 +218,7 @@ namespace Autoclave
 
                 if (File.Exists(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html"))
                 {
+                    string writeHTML = lot.html;
                     lot.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html");
                     IStateDecodable decode = lot.state as IStateDecodable;
                     DateTime dateold = decode.GetLatestDate(lot);
@@ -228,7 +235,7 @@ namespace Autoclave
                             lottery = lot,
                             numbers = new string[] { "Date Trigger Only" },
                         });
-                        File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", lot.html);
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", writeHTML);
                         main.AddToConsole("    ...Update found.");
                     }
                 }
