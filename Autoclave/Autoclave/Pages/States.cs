@@ -260,6 +260,109 @@ namespace Autoclave.Pages
                    },
                 }
             },
+            new Connecticut
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_luckylinksday",
+                        lotteryNameUI = "Lucky Links",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_luckylinkseve",
+                        lotteryNameUI = "Lucky Links",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_cash5",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_play3day",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_play3eve",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_play4day",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Connecticut(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.ctlottery.org/",
+                        lotteryName = "connecticut_play4eve",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Connecticut(),
+                    },
+                }
+            },
+            new Deleware
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.delottery.com/games/play3play4/",
+                        lotteryName = "deleware_play3day",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Deleware(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.delottery.com/games/play3play4/",
+                        lotteryName = "deleware_play3eve",
+                        lotteryNameUI = "Play 3",
+                        state = new Pages.Deleware(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.delottery.com/games/play3play4/",
+                        lotteryName = "deleware_play4day",
+                        lotteryNameUI = "Play 4",
+                        state = new Pages.Deleware(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.delottery.com/games/play3play4/",
+                        lotteryName = "deleware_play4eve",
+                        lotteryNameUI = "Play 4",
+                        state = new Pages.Deleware(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.delottery.com/games/multiwin/",
+                        lotteryName = "deleware_multiwin",
+                        lotteryNameUI = "Multiwin",
+                        state = new Pages.Deleware(),
+                    },
+                }
+            }
         };
     }
 }

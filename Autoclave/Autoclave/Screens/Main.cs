@@ -197,18 +197,18 @@ namespace Autoclave
                 {
                     try
                     {
+                        if (args.Length <= 1)
+                        {
+                            AddToConsole("Unable to find lottery \' \'");
+                            return;
+                        }
+
                         switch (args[0])
                         {
                             case "date":
 
                                 foreach (Lottery l in States.AllStates.SelectMany(x => x.lotteries))
                                 {
-                                    if (args.Length <= 1)
-                                    {
-                                        AddToConsole("Unable to find lottery \' \'");
-                                        return;
-                                    }
-
                                     if (l.lotteryName == args[1])
                                     {
                                         l.LoadHtml(l.url);
@@ -216,6 +216,32 @@ namespace Autoclave
                                         DateTime date = decode.GetLatestDate(l);
 
                                         AddToConsole(date.ToLongDateString());
+
+                                        return;
+                                    }
+                                }
+
+                                foreach (IStateDecodable s in States.AllStates)
+                                {
+                                    if(args[1] == s.stateName)
+                                    {
+                                        foreach(Lottery l in (s as State).lotteries)
+                                        {
+                                            try
+                                            {
+                                                l.LoadHtml(l.url);
+                                                IStateDecodable decode = l.state as IStateDecodable;
+                                                DateTime date = decode.GetLatestDate(l);
+
+                                                AddToConsole(l.lotteryName + ": " + date.ToLongDateString());
+
+                                                continue;
+                                            }
+                                            catch
+                                            {
+                                                AddToConsole("An error occurred when running " + l.lotteryName);
+                                            }
+                                        }
 
                                         return;
                                     }
@@ -253,6 +279,39 @@ namespace Autoclave
                                     }
                                 }
 
+                                foreach (IStateDecodable s in States.AllStates)
+                                {
+                                    if (args[1] == s.stateName)
+                                    {
+                                        foreach (Lottery l in (s as State).lotteries)
+                                        {
+                                            try
+                                            {
+                                                if (l.Action == LotteryDecodeAction.Decode)
+                                                {
+                                                    l.LoadHtml(l.url);
+                                                    IStateDecodable decode = l.state as IStateDecodable;
+                                                    LotteryNumber num = decode.GetLatestNumbers(l);
+
+                                                    AddToConsole(l.lotteryName + ": " + num.ToString(LotteryNumberStringTypes.Numbers));
+                                                }
+                                                else if (l.Action == LotteryDecodeAction.DateTrigger)
+                                                {
+                                                    AddToConsole("Date Trigger Only");
+                                                }
+
+                                                continue;
+                                            }
+                                            catch
+                                            {
+                                                AddToConsole("An error occurred when running " + l.lotteryName);
+                                            }
+                                        }
+
+                                        return;
+                                    }
+                                }
+
                                 AddToConsole("Unable to find lottery \'" + args[1] + "\'");
 
                                 break;
@@ -266,7 +325,7 @@ namespace Autoclave
                     }
                     catch
                     {
-                        AddToConsole("An error occurred when running " + command);
+                        AddToConsole("A fatal error occurred when running " + command);
                     }
                 }));
 
