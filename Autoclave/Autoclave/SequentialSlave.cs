@@ -31,6 +31,7 @@ namespace Autoclave
             TimeText.Text = Sequence[index].subdate;
             StateText.Text = Sequence[index].lottery.state.stateNameUI;
             DateText.Text = Sequence[index].date.ToShortDateString();
+            SeqText.Text = (indexThrough + 1) + " / " + Sequence.Count;
 
             if(checkBox1.Checked)
             {
@@ -44,6 +45,7 @@ namespace Autoclave
             {
                 indexThrough++;
                 LoadLottery(indexThrough);
+                SeqText.Text = (indexThrough + 1) + " / " + Sequence.Count;
             }
             else
             {

@@ -15,7 +15,7 @@ namespace Autoclave.Pages
         {
             get
             {
-                return "Arkansas";
+                return "arkansas";
             }
         }
 

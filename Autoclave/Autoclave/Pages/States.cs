@@ -362,6 +362,137 @@ namespace Autoclave.Pages
                         state = new Pages.Deleware(),
                     },
                 }
+            },
+            new DC
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_3day",
+                        lotteryNameUI = "DC 3",
+                        state = new Pages.DC(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_3eve",
+                        lotteryNameUI = "DC 3",
+                        state = new Pages.DC(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_4day",
+                        lotteryNameUI = "DC 4",
+                        state = new Pages.DC(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_4eve",
+                        lotteryNameUI = "DC 4",
+                        state = new Pages.DC(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_5day",
+                        lotteryNameUI = "DC 5",
+                        state = new Pages.DC(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://dclottery.com/games/dc3/default.aspx/",
+                        lotteryName = "dc_5eve",
+                        lotteryNameUI = "DC 5",
+                        state = new Pages.DC(),
+                    },
+                }              
+            },
+            new Florida
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_luckymoney",
+                        lotteryNameUI = "Lucky Money",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_fantasy5",
+                        lotteryNameUI = "Fantasy 5",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick2day",
+                        lotteryNameUI = "Pick 2",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick2eve",
+                        lotteryNameUI = "Pick 2",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick4day",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick4eve",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick5day",
+                        lotteryNameUI = "Pick 5",
+                        state = new Pages.Florida(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.flalottery.com/",
+                        lotteryName = "florida_pick5eve",
+                        lotteryNameUI = "Pick 5",
+                        state = new Pages.Florida(),
+                    },
+                }
             }
         };
     }

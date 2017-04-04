@@ -108,7 +108,9 @@ namespace Autoclave
             {
                 string htmlCode = client.DownloadString(url);
                 this.html = htmlCode;
-                States.CachedURLS.Add(url, html);
+
+                if(!String.IsNullOrWhiteSpace(html))
+                    States.CachedURLS.Add(url, html);
             }
         }
     }

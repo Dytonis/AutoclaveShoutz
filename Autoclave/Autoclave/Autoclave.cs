@@ -48,7 +48,7 @@ namespace Autoclave
                 main.AddToConsole((watch.ElapsedMilliseconds / 1000).ToString() + " seconds elapsed of " + seconds + ". (" + (((watch.ElapsedMilliseconds / 1000) / seconds) * 100).ToString(".##") + "%)");
         }
 
-        System.Timers.Timer ticker;
+        public System.Timers.Timer ticker;
         public void RunningUpdated()
         {
             if(ticker == null)
@@ -77,14 +77,8 @@ namespace Autoclave
             main.AddToConsole("Autoclave ready.");
         }
 
-        public void Tick(object source, ElapsedEventArgs e)
+        public void Cycle(bool force = false)
         {
-            if (!Running)
-            {
-                ticker.Stop();
-                return;
-            }
-
             main.AddToConsole("Cycles Render starting...");
 
             main.NumbersList.Clear();
@@ -104,7 +98,7 @@ namespace Autoclave
                     {
                         try
                         {
-                            if (!Running)
+                            if (!Running && !force)
                                 return;
 
                             main.UpdateProgressBar1(run, States.AllStates.Sum(x => x.lotteries.Count));
@@ -114,17 +108,11 @@ namespace Autoclave
 
                             if (lottery.Action == LotteryDecodeAction.Decode)
                             {
-                                lottery.LoadHtml(lottery.url);
-                                IStateDecodable decode = state as IStateDecodable;
-                                LotteryNumber num = decode.GetLatestNumbers(lottery);
-                                HandleUpdateIfNeeded(num);
+                                HandleUpdateIfNeeded(DecodeNumbers(lottery));
                             }
                             else if (lottery.Action == LotteryDecodeAction.DateTrigger)
                             {
-                                lottery.LoadHtml(lottery.url);
-                                IStateDecodable decode = state as IStateDecodable;
-                                DateTime date = decode.GetLatestDate(lottery);
-                                HandleDateTrigger(date, lottery);
+                                HandleDateTrigger(DecodeDate(lottery), lottery);
                             }
                             iL++;
                             run++;
@@ -133,12 +121,27 @@ namespace Autoclave
                             main.UpdateStatusText("Cycles Render (" + run + " / " + States.AllStates.Sum(x => x.lotteries.Count) + ")");
                             //main.AddToConsole(num.lottery.lotteryNameUI + " finished.");
                         }
-                        catch
+                        catch (NumbersUnavailableExcpetion)
                         {
+                            main.AddToConsole("    ...Currently unavailabele/pending.");
+                            continue;
+                        }
+                        catch (MissingFieldException)
+                        {
+                            main.AddToConsole("    ...Server returned an invalid response.");
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ex.InnerException != null)
+                                if (ex.InnerException.Message.Contains("closed."))
+                                {
+                                    main.AddToConsole("    ...The host closed the connection.");
+                                    continue;
+                                }
                             main.AddToConsole("Exception while running " + lottery.lotteryName);
                             continue;
                         }
-                        
+
                     }
                     iS++;
                 }
@@ -170,6 +173,75 @@ namespace Autoclave
             {
                 main.AddToConsole("There was an error running cycles render.");
             }
+        }
+
+        public LotteryNumber DecodeNumbers(Lottery l)
+        {
+            for (int tries = 0; tries < 3; tries++)
+            {
+                try
+                {
+                    l.LoadHtml(l.url);
+                    IStateDecodable decode = l.state as IStateDecodable;
+                    LotteryNumber num = decode.GetLatestNumbers(l);
+                    return num;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null)
+                        if (ex.InnerException.Message.Contains("closed."))
+                        {
+                            main.AddToConsole("    ...The host closed the connection.");
+                            main.AddToConsole("    ...Retrying (" + (tries + 1) + " of 3)");
+                            Thread.Sleep(1000);
+                            continue;
+                        }
+                    main.AddToConsole("Exception while running " + l.lotteryName);
+                    break;
+                }
+            }
+
+            throw new NumbersUnavailableExcpetion();
+        }
+
+        public DateTime DecodeDate(Lottery l)
+        {
+            for (int tries = 0; tries < 3; tries++)
+            {
+                try
+                {
+                    l.LoadHtml(l.url);
+                    IStateDecodable decode = l.state as IStateDecodable;
+                    DateTime date = decode.GetLatestDate(l);
+                    return date;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null)
+                        if (ex.InnerException.Message.Contains("closed."))
+                        {
+                            main.AddToConsole("    ...The host closed the connection.");
+                            main.AddToConsole("    ...Retrying (" + (tries + 1) + " of 3)");
+                            Thread.Sleep(1000);
+                            continue;
+                        }
+                    main.AddToConsole("Exception while running " + l.lotteryName);
+                    break;
+                }
+            }
+
+            throw new NumbersUnavailableExcpetion();
+        }
+
+        public void Tick(object source, ElapsedEventArgs e)
+        {
+            if (!Running)
+            {
+                ticker.Stop();
+                return;
+            }
+
+            Cycle();
         }
 
         public void HandleUpdateIfNeeded(LotteryNumber num)
@@ -205,7 +277,11 @@ namespace Autoclave
                     main.AddToConsole("    ...No record.");
                 }
             }
-            catch
+            catch (NumbersUnavailableExcpetion)
+            {
+                main.AddToConsole("    ...Currently unavailabele/pending.");
+            }
+            catch (Exception)
             {
                 main.AddToConsole("Exception while running " + num.lottery.lotteryName);
             }
@@ -252,10 +328,19 @@ namespace Autoclave
                     main.AddToConsole("    ...No record.");
                 }
             }
-            catch
+            catch (NumbersUnavailableExcpetion)
+            {
+                main.AddToConsole("    ...Currently unavailabele/pending.");
+            }
+            catch (Exception)
             {
                 main.AddToConsole("Exception while running " + lot.lotteryName);
             }
         }
+    }
+
+    public class NumbersUnavailableExcpetion : Exception
+    {
+
     }
 }

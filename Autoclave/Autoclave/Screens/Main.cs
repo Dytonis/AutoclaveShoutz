@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -66,12 +69,15 @@ namespace Autoclave
                 this.BackColor = Color.Gray;
                 button1.Text = "RESUME FROM SLAVE";
                 autoclave.Running = false;
+
+                SystemSounds.Asterisk.Play();
             }
         }
 
         public void SlaveFinished()
         {
-            button1_Click(null, null);
+            if(!autoclave.Running)
+                button1_Click(null, null);
         }
 
         public void ClearConsole()
@@ -197,23 +203,21 @@ namespace Autoclave
                 {
                     try
                     {
-                        if (args.Length <= 1)
-                        {
-                            AddToConsole("Unable to find lottery \' \'");
-                            return;
-                        }
-
                         switch (args[0])
                         {
                             case "date":
+
+                                if (args.Length <= 1)
+                                {
+                                    AddToConsole("Unable to find lottery \' \'");
+                                    return;
+                                }
 
                                 foreach (Lottery l in States.AllStates.SelectMany(x => x.lotteries))
                                 {
                                     if (l.lotteryName == args[1])
                                     {
-                                        l.LoadHtml(l.url);
-                                        IStateDecodable decode = l.state as IStateDecodable;
-                                        DateTime date = decode.GetLatestDate(l);
+                                        DateTime date = autoclave.DecodeDate(l);
 
                                         AddToConsole(date.ToLongDateString());
 
@@ -229,16 +233,20 @@ namespace Autoclave
                                         {
                                             try
                                             {
-                                                l.LoadHtml(l.url);
-                                                IStateDecodable decode = l.state as IStateDecodable;
-                                                DateTime date = decode.GetLatestDate(l);
+                                                DateTime date = autoclave.DecodeDate(l);
 
                                                 AddToConsole(l.lotteryName + ": " + date.ToLongDateString());
 
                                                 continue;
                                             }
-                                            catch
+                                            catch(Exception ex)
                                             {
+                                                if(ex.InnerException != null)
+                                                    if(ex.InnerException.Message.Contains("closed."))
+                                                    {
+                                                        AddToConsole("    ...The host closed the connection.");
+                                                        continue;
+                                                    }
                                                 AddToConsole("An error occurred when running " + l.lotteryName);
                                             }
                                         }
@@ -253,6 +261,12 @@ namespace Autoclave
 
                             case "numbers":
 
+                                if (args.Length <= 1)
+                                {
+                                    AddToConsole("Unable to find lottery \' \'");
+                                    return;
+                                }
+
                                 foreach (Lottery l in States.AllStates.SelectMany(x => x.lotteries))
                                 {
                                     if (args.Length <= 1)
@@ -265,9 +279,7 @@ namespace Autoclave
                                     {
                                         if (l.Action == LotteryDecodeAction.Decode)
                                         {
-                                            l.LoadHtml(l.url);
-                                            IStateDecodable decode = l.state as IStateDecodable;
-                                            LotteryNumber num = decode.GetLatestNumbers(l);
+                                            LotteryNumber num = autoclave.DecodeNumbers(l);
 
                                             AddToConsole(num.ToString(LotteryNumberStringTypes.Numbers));
                                         }
@@ -289,9 +301,7 @@ namespace Autoclave
                                             {
                                                 if (l.Action == LotteryDecodeAction.Decode)
                                                 {
-                                                    l.LoadHtml(l.url);
-                                                    IStateDecodable decode = l.state as IStateDecodable;
-                                                    LotteryNumber num = decode.GetLatestNumbers(l);
+                                                    LotteryNumber num = autoclave.DecodeNumbers(l);
 
                                                     AddToConsole(l.lotteryName + ": " + num.ToString(LotteryNumberStringTypes.Numbers));
                                                 }
@@ -302,9 +312,16 @@ namespace Autoclave
 
                                                 continue;
                                             }
-                                            catch
+                                            catch (Exception ex)
                                             {
-                                                AddToConsole("An error occurred when running " + l.lotteryName);
+                                                if (ex.InnerException != null)
+                                                    if (ex.InnerException.Message.Contains("closed."))
+                                                    {
+                                                        AddToConsole("    ...The host closed the connection.");
+                                                        continue;
+                                                    }
+                                                AddToConsole("Exception while running " + l.lotteryName);
+                                                continue;
                                             }
                                         }
 
@@ -313,6 +330,56 @@ namespace Autoclave
                                 }
 
                                 AddToConsole("Unable to find lottery \'" + args[1] + "\'");
+
+                                break;
+
+                            case "autoclave":
+
+                                if (args.Length <= 1)
+                                {
+                                    AddToConsole(">>autoclave usage:");
+                                    AddToConsole(">>autoclave cycle");
+                                    AddToConsole(">>autoclave init");
+                                    return;
+                                }
+
+                                if (args[1] == "cycle")
+                                {
+                                    if (autoclave != null)
+                                    {
+                                        if (autoclave.ticker != null)
+                                        {
+                                            autoclave.Cycle(true);
+                                        }
+                                        else
+                                            AddToConsole("Autoclave is not initialized. Please run autoclave init.");
+                                    }
+                                    else
+                                        AddToConsole("Autoclave is not initialized. Please run autoclave init.");
+                                }
+                                else if (args[1] == "init")
+                                {
+                                    autoclave.RunningUpdated();
+                                }
+
+                                break;
+
+                            case "write":
+
+                                if(args.Length == 2)
+                                {
+                                    Thread writeThread = new Thread(new ThreadStart(() =>
+                                    {
+                                        using (WebClient client = new WebClient()) // WebClient class inherits IDisposable
+                                        {
+                                            AddToConsole("Downloading " + args[1]);
+                                            client.DownloadFile(args[1], System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\write.html");
+                                            AddToConsole("Finished download.");
+                                        }
+                                    }));
+
+                                    writeThread.Start();
+                                }
 
                                 break;
 

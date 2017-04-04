@@ -301,7 +301,7 @@ namespace Autoclave.Pages
             }
             catch
             {
-                throw;
+                throw new NumbersUnavailableExcpetion();
             }
 
             throw new Exception();

@@ -273,7 +273,9 @@
             this.Controls.Add(this.panel2);
             this.MinimumSize = new System.Drawing.Size(963, 349);
             this.Name = "SequentialSlave";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sequential Slave";
+            this.TopMost = true;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

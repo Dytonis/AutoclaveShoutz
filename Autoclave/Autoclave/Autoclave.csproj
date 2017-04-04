@@ -57,7 +57,9 @@
     <Compile Include="Pages\California.cs" />
     <Compile Include="Pages\Colorado.cs" />
     <Compile Include="Pages\Connecticut.cs" />
+    <Compile Include="Pages\DC.cs" />
     <Compile Include="Pages\Deleware.cs" />
+    <Compile Include="Pages\Florida.cs" />
     <Compile Include="Pages\States.cs" />
     <Compile Include="Pages\Maine.cs" />
     <Compile Include="Pages\State.cs" />
