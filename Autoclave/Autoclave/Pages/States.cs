@@ -322,7 +322,7 @@ namespace Autoclave.Pages
                     },
                 }
             },
-            new Deleware
+            new Delaware
             {
                 lotteries = new List<Lottery>()
                 {
@@ -331,35 +331,35 @@ namespace Autoclave.Pages
                         url = "http://www.delottery.com/games/play3play4/",
                         lotteryName = "deleware_play3day",
                         lotteryNameUI = "Play 3",
-                        state = new Pages.Deleware(),
+                        state = new Pages.Delaware(),
                     },
                     new Lottery
                     {
                         url = "http://www.delottery.com/games/play3play4/",
                         lotteryName = "deleware_play3eve",
                         lotteryNameUI = "Play 3",
-                        state = new Pages.Deleware(),
+                        state = new Pages.Delaware(),
                     },
                     new Lottery
                     {
                         url = "http://www.delottery.com/games/play3play4/",
                         lotteryName = "deleware_play4day",
                         lotteryNameUI = "Play 4",
-                        state = new Pages.Deleware(),
+                        state = new Pages.Delaware(),
                     },
                     new Lottery
                     {
                         url = "http://www.delottery.com/games/play3play4/",
                         lotteryName = "deleware_play4eve",
                         lotteryNameUI = "Play 4",
-                        state = new Pages.Deleware(),
+                        state = new Pages.Delaware(),
                     },
                     new Lottery
                     {
                         url = "http://www.delottery.com/games/multiwin/",
                         lotteryName = "deleware_multiwin",
                         lotteryNameUI = "Multiwin",
-                        state = new Pages.Deleware(),
+                        state = new Pages.Delaware(),
                     },
                 }
             },
@@ -409,7 +409,7 @@ namespace Autoclave.Pages
                         lotteryNameUI = "DC 5",
                         state = new Pages.DC(),
                     },
-                }              
+                }
             },
             new Florida
             {
@@ -491,6 +491,95 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick5eve",
                         lotteryNameUI = "Pick 5",
                         state = new Pages.Florida(),
+                    },
+                }
+            },
+            new Idaho
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "https://www.idaholottery.com/games/draw/idahoCash/",
+                        lotteryName = "idaho_cash",
+                        lotteryNameUI = "Cash",
+                        state = new Pages.Idaho(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.idaholottery.com/games/draw/pick3/",
+                        lotteryName = "idaho_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Idaho(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.idaholottery.com/games/draw/pick3/",
+                        lotteryName = "idaho_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Idaho(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.idaholottery.com/games/draw/weeklyGrand/",
+                        lotteryName = "idaho_weeklygrand",
+                        lotteryNameUI = "Weekly Grand",
+                        state = new Pages.Idaho(),
+                    },
+                }
+            },
+            new Illinois
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_luckydaylottoday",
+                        lotteryNameUI = "Lucky Day Lotto",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_luckydaylottoeve",
+                        lotteryNameUI = "Lucky Day Lotto",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_pick4day",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Illinois(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.illinoislottery.com/en-us/home.html",
+                        lotteryName = "illinois_pick4eve",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Illinois(),
                     },
                 }
             }

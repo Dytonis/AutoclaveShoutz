@@ -106,6 +106,15 @@ namespace Autoclave
             
             using (WebClient client = new WebClient())
             {
+                if(state.GetType() == typeof(Georgia))
+                {
+                    client.Headers.Add("Upgrade-Insecure-Requests", "1");
+                    client.Headers.Add("Accept", "*/*");
+                    client.Headers.Add("Accept-Encoding", "gzip, deflate, sdch, br");
+                    client.Headers.Add("Accept-Language", "en-US,en;q=0.8");
+                }
+
+                client.Headers.Add("User-Agent", "Autoclave by Shoutz, Inc. LotteryHUB.com Lottery Data Miner");
                 string htmlCode = client.DownloadString(url);
                 this.html = htmlCode;
 

@@ -41,7 +41,7 @@ namespace Autoclave.Pages
 
                 if (lottery.lotteryName.Equals("florida_lotto"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate wnDateSlideOut')]")[2];
                     string dateText = node.InnerHtml;
 
@@ -50,7 +50,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_luckymoney"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate wnDateSlideOut')]")[4];
                     string dateText = node.InnerHtml;
 
@@ -59,7 +59,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_fantasy5"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate wnDateSlideOut')]")[5];
                     string dateText = node.InnerHtml;
 
@@ -68,7 +68,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick5day"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[6];
                     string dateText = node.InnerHtml;
 
@@ -77,7 +77,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick5eve"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[7];
                     string dateText = node.InnerHtml;
 
@@ -86,7 +86,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick4day"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[8];
                     string dateText = node.InnerHtml;
 
@@ -95,7 +95,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick4eve"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[9];
                     string dateText = node.InnerHtml;
 
@@ -104,7 +104,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick3day"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[10];
                     string dateText = node.InnerHtml;
 
@@ -113,7 +113,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick3eve"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    ///File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[11];
                     string dateText = node.InnerHtml;
 
@@ -122,7 +122,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick2day"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[12];
                     string dateText = node.InnerHtml;
 
@@ -131,7 +131,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick2eve"))
                 {
-                    File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
+                    //File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\" + lottery.lotteryName + ".html", lottery.html);
                     HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnDate')]")[13];
                     string dateText = node.InnerHtml;
 

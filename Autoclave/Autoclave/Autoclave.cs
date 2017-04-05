@@ -14,6 +14,7 @@ namespace Autoclave
     public class Autoclave
     {
         public double seconds = 1;
+        public bool Debug = false;
         public Main main;
 
         public bool Cycling = false;
@@ -112,7 +113,8 @@ namespace Autoclave
                             }
                             else if (lottery.Action == LotteryDecodeAction.DateTrigger)
                             {
-                                HandleDateTrigger(DecodeDate(lottery), lottery);
+                                lottery.LoadHtml(lottery.url);
+                                HandleDateTrigger(DecodeDate(lottery, true), lottery);
                             }
                             iL++;
                             run++;
@@ -130,7 +132,11 @@ namespace Autoclave
                         {
                             main.AddToConsole("    ...Server returned an invalid response.");
                         }
-                        catch (Exception ex)
+                        catch (IOException)
+                        {
+                            main.AddToConsole("IO exception while running " + lottery.lotteryName);
+                        }
+                        catch (System.Net.WebException ex)
                         {
                             if (ex.InnerException != null)
                                 if (ex.InnerException.Message.Contains("closed."))
@@ -138,7 +144,19 @@ namespace Autoclave
                                     main.AddToConsole("    ...The host closed the connection.");
                                     continue;
                                 }
-                            main.AddToConsole("Exception while running " + lottery.lotteryName);
+                            main.AddToConsole("Web exception while running " + lottery.lotteryName);
+                            continue;
+                        }
+                        catch (Exception ex)
+                        {
+                            main.AddToConsole("Unknown exception while running " + lottery.lotteryName);
+                            if (Debug)
+                            {
+                                main.AddToConsole("    ..." + ex.Message);
+                                if (ex.InnerException != null)
+                                    main.AddToConsole("    ..." + ex.InnerException.Message);
+                                main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                            }
                             continue;
                         }
 
@@ -196,7 +214,14 @@ namespace Autoclave
                             Thread.Sleep(1000);
                             continue;
                         }
-                    main.AddToConsole("Exception while running " + l.lotteryName);
+                    main.AddToConsole("Unknown exception while running " + l.lotteryName);
+                    if (Debug)
+                    {
+                        main.AddToConsole("    ..." + ex.Message);
+                        if (ex.InnerException != null)
+                            main.AddToConsole("    ..." + ex.InnerException.Message);
+                        main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                    }
                     break;
                 }
             }
@@ -225,7 +250,51 @@ namespace Autoclave
                             Thread.Sleep(1000);
                             continue;
                         }
-                    main.AddToConsole("Exception while running " + l.lotteryName);
+                    main.AddToConsole("Unknown exception while running " + l.lotteryName);
+                    if (Debug)
+                    {
+                        main.AddToConsole("    ..." + ex.Message);
+                        if (ex.InnerException != null)
+                            main.AddToConsole("    ..." + ex.InnerException.Message);
+                        main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                    }
+                    break;
+                }
+            }
+
+            throw new NumbersUnavailableExcpetion();
+        }
+        public DateTime DecodeDate(Lottery l, bool skipLaod)
+        {
+            for (int tries = 0; tries < 3; tries++)
+            {
+                try
+                {
+                    if(!skipLaod)
+                        l.LoadHtml(l.url);
+
+                    IStateDecodable decode = l.state as IStateDecodable;
+                    DateTime date = decode.GetLatestDate(l);
+                    return date;
+                }
+                catch (Exception ex)
+                {
+                    if (ex.InnerException != null)
+                        if (ex.InnerException.Message.Contains("closed."))
+                        {
+                            main.AddToConsole("    ...The host closed the connection.");
+                            main.AddToConsole("    ...Retrying (" + (tries + 1) + " of 3)");
+                            Thread.Sleep(1000);
+                            continue;
+                        }
+                    main.AddToConsole("Unknown exception while running " + l.lotteryName);
+                    if (Debug)
+                    {
+                        main.AddToConsole("    ..." + ex.Message);
+                        if (ex.InnerException != null)
+                            main.AddToConsole("    ..." + ex.InnerException.Message);
+                        main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                    }
                     break;
                 }
             }
@@ -244,7 +313,7 @@ namespace Autoclave
             Cycle();
         }
 
-        public void HandleUpdateIfNeeded(LotteryNumber num)
+        public void HandleUpdateIfNeeded(LotteryNumber num, int recursivecalls = 0)
         {
             try
             {
@@ -255,14 +324,30 @@ namespace Autoclave
                     //save the new html
                     string writeHTML = num.lottery.html;
                     num.lottery.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
+                    if(String.IsNullOrWhiteSpace(num.lottery.html))
+                    {
+                        main.AddToConsole("    ...Record blank. Deleting...");
+                        File.Delete(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
+                        Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
+                        main.NumbersList.Add(num);
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
+                        main.AddToConsole("    ...Record re-made. This will cause a slave update.");
+
+                    }
                     IStateDecodable decode = num.lottery.state as IStateDecodable;
                     LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
 
-                    if (numold.numbers.Equals(num.numbers) || numold.date == num.date)
+                    bool numsMatch = false;
+                    for(int i = 0; i < num.numbers.Length; i++)
                     {
-                        //no update
+                        if(numold.numbers[i].Equals(num.numbers[i]))
+                        {
+                            numsMatch = true;
+                            return;
+                        }
                     }
-                    else
+
+                    if(numsMatch || num.date != numold.date) //sense update
                     {
                         main.NumbersList.Add(num);
                         File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
@@ -281,9 +366,16 @@ namespace Autoclave
             {
                 main.AddToConsole("    ...Currently unavailabele/pending.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 main.AddToConsole("Exception while running " + num.lottery.lotteryName);
+                if (Debug)
+                {
+                    main.AddToConsole("    ..." + ex.Message);
+                    if (ex.InnerException != null)
+                        main.AddToConsole("    ..." + ex.InnerException.Message);
+                    main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                }
             }
         }
         public void HandleDateTrigger(DateTime date, Lottery lot)
@@ -296,14 +388,25 @@ namespace Autoclave
                 {
                     string writeHTML = lot.html;
                     lot.html = File.ReadAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html");
+                    if (String.IsNullOrWhiteSpace(lot.html))
+                    {
+                        main.AddToConsole("    ...Record blank. Deleting...");
+                        File.Delete(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html");
+                        Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
+                        main.NumbersList.Add(new LotteryNumber
+                        {
+                            date = date,
+                            lottery = lot,
+                            numbers = new string[] { "Date Trigger Only" },
+                        });
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + lot.lotteryName + ".html", writeHTML);
+                        main.AddToConsole("    ...Record re-made. This will cause a slave update.");
+
+                    }
                     IStateDecodable decode = lot.state as IStateDecodable;
                     DateTime dateold = decode.GetLatestDate(lot);
 
-                    if (date.Equals(dateold))
-                    {
-                        //no update
-                    }
-                    else
+                    if (date != dateold) //sense update
                     {
                         main.NumbersList.Add(new LotteryNumber
                         {
@@ -332,9 +435,16 @@ namespace Autoclave
             {
                 main.AddToConsole("    ...Currently unavailabele/pending.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 main.AddToConsole("Exception while running " + lot.lotteryName);
+                if (Debug)
+                {
+                    main.AddToConsole("    ..." + ex.Message);
+                    if (ex.InnerException != null)
+                        main.AddToConsole("    ..." + ex.InnerException.Message);
+                    main.AddToConsole("Stack trace: \n" + ex.StackTrace);
+                }
             }
         }
     }

@@ -17,6 +17,7 @@ namespace Autoclave
 {
     public partial class Main : Form
     {
+        public string version = "build7 - 4/4/2017 9:22pm";
         public bool SlaveRunning;
         public Autoclave autoclave;
         public List<LotteryNumber> NumbersList = new List<LotteryNumber>();
@@ -340,6 +341,7 @@ namespace Autoclave
                                     AddToConsole(">>autoclave usage:");
                                     AddToConsole(">>autoclave cycle");
                                     AddToConsole(">>autoclave init");
+                                    AddToConsole(">>autoclave debug");
                                     return;
                                 }
 
@@ -350,36 +352,104 @@ namespace Autoclave
                                         if (autoclave.ticker != null)
                                         {
                                             autoclave.Cycle(true);
+                                            return;
                                         }
                                         else
+                                        {
                                             AddToConsole("Autoclave is not initialized. Please run autoclave init.");
+                                            return;
+                                        }
                                     }
                                     else
+                                    {
                                         AddToConsole("Autoclave is not initialized. Please run autoclave init.");
+                                        return;
+                                    }
                                 }
                                 else if (args[1] == "init")
                                 {
                                     autoclave.RunningUpdated();
+                                    return;
+                                }
+
+                                if (args[1] == "debug")
+                                {
+                                    if(args.Length == 3)
+                                    {
+                                        if(args[2].ToLower() == "true")
+                                        {
+                                            autoclave.Debug = true;
+                                            AddToConsole("Debug messages enabled.");
+                                        }
+                                        else if (args[2].ToLower() == "false")
+                                        {
+                                            autoclave.Debug = false;
+                                            AddToConsole("Debug messages disabled.");
+                                        }
+                                        else
+                                        {
+                                            AddToConsole(">>debug usage:");
+                                            AddToConsole(">>autoclave debug true/false"); AddToConsole(">>debug usage:");
+                                            AddToConsole(">>autoclave debug true/false");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        AddToConsole(">>debug usage:");
+                                        AddToConsole(">>autoclave debug true/false");
+                                    }
                                 }
 
                                 break;
 
                             case "write":
 
-                                if(args.Length == 2)
+                                if(args.Length >= 2)
                                 {
                                     Thread writeThread = new Thread(new ThreadStart(() =>
                                     {
                                         using (WebClient client = new WebClient()) // WebClient class inherits IDisposable
                                         {
-                                            AddToConsole("Downloading " + args[1]);
-                                            client.DownloadFile(args[1], System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\write.html");
-                                            AddToConsole("Finished download.");
+                                            try
+                                            {
+                                                if(args.Length >= 3)
+                                                {
+                                                    if(command.Contains("-emulate"))
+                                                    {                 
+                                                        client.Headers.Add("Upgrade-Insecure-Requests", "1");
+                                                        client.Headers.Add("Accept", "*/*");
+                                                        client.Headers.Add("Accept-Encoding", "gzip, deflate, sdch, br");
+                                                        client.Headers.Add("Accept-Language", "en-US,en;q=0.8");
+                                                    }
+                                                }
+                                                client.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36");
+                                                AddToConsole("Downloading " + args[1]);
+                                                string text = client.DownloadString(args[1]);
+                                                File.WriteAllText(System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Autoclave\\Save\\write.html", text);
+                                                AddToConsole("Finished download.");
+                                            }
+                                            catch(WebException ex)
+                                            {
+                                                if (ex.Message.Contains("find"))
+                                                { 
+                                                    AddToConsole("Invalid URI.");
+                                                    return;
+                                                }
+
+                                                AddToConsole("WebException " + ex.Status.ToString());
+                                                return;
+                                            }
                                         }
                                     }));
 
                                     writeThread.Start();
                                 }
+
+                                break;
+
+                            case "version":
+
+                                AddToConsole(version);
 
                                 break;
 
