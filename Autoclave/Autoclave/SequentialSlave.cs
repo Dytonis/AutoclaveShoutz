@@ -54,5 +54,21 @@ namespace Autoclave
                 this.Close();
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(!String.IsNullOrWhiteSpace(Sequence[indexThrough].info.rawNumbersText))
+                richTextBox1.Text = Sequence[indexThrough].info.rawNumbersText;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (indexThrough - 1 >= 0)
+            {
+                indexThrough--;
+                LoadLottery(indexThrough);
+                SeqText.Text = (indexThrough) + " / " + Sequence.Count;
+            }
+        }
     }
 }

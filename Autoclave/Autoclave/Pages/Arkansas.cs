@@ -144,13 +144,17 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
-                        nodes[1].InnerText.Trim(),
-                        nodes[3].InnerText.Trim(),
-                        nodes[5].InnerText.Trim(),
-                        nodes[7].InnerText.Trim(),
-                        nodes[9].InnerText.Trim(),
+                            nodes[1].InnerText.Trim(),
+                            nodes[3].InnerText.Trim(),
+                            nodes[5].InnerText.Trim(),
+                            nodes[7].InnerText.Trim(),
+                            nodes[9].InnerText.Trim(),
                         }
                     };
                 }
@@ -163,6 +167,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[1].InnerText.Trim(),
@@ -184,6 +192,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Day",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[2].InnerText.Trim(),
@@ -202,6 +214,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Eve",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[2].InnerText.Trim(),
@@ -220,6 +236,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Day",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[2].InnerText.Trim(),
@@ -239,6 +259,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Eve",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[2].InnerText.Trim(),

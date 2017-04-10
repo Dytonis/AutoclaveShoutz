@@ -154,6 +154,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[0].InnerText.Trim(),
@@ -173,6 +177,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[0].InnerText.Trim(),
@@ -191,6 +199,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes[0].InnerText.Trim(),
@@ -218,6 +230,10 @@ namespace Autoclave.Pages
                                 date = GetLatestDate(lottery),
                                 lottery = lottery,
                                 subdate = "Day",
+                                info = new DebugDecodeInformation()
+                                {
+                                    rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                                },
                                 numbers = new string[]
                                 {
                                     nodes[0].InnerText.Trim(),
@@ -239,6 +255,10 @@ namespace Autoclave.Pages
                                 date = GetLatestDate(lottery),
                                 lottery = lottery,
                                 subdate = "Eve",
+                                info = new DebugDecodeInformation()
+                                {
+                                    rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                                },
                                 numbers = new string[]
                                 {
                                     nodes[0].InnerText.Trim(),
@@ -266,6 +286,10 @@ namespace Autoclave.Pages
                                 date = GetLatestDate(lottery),
                                 lottery = lottery,
                                 subdate = "Day",
+                                info = new DebugDecodeInformation()
+                                {
+                                    rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                                },
                                 numbers = new string[]
                                 {
                                     nodes[0].InnerText.Trim(),
@@ -288,6 +312,10 @@ namespace Autoclave.Pages
                                 date = GetLatestDate(lottery),
                                 lottery = lottery,
                                 subdate = "Eve",
+                                info = new DebugDecodeInformation()
+                                {
+                                    rawNumbersText = nodes.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                                },
                                 numbers = new string[]
                                 {
                                     nodes[0].InnerText.Trim(),

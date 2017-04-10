@@ -310,14 +310,14 @@ namespace Autoclave.Pages
                     {
                         url = "https://www.ctlottery.org/",
                         lotteryName = "connecticut_play4day",
-                        lotteryNameUI = "Play 3",
+                        lotteryNameUI = "Play 4",
                         state = new Pages.Connecticut(),
                     },
                     new Lottery
                     {
                         url = "https://www.ctlottery.org/",
                         lotteryName = "connecticut_play4eve",
-                        lotteryNameUI = "Play 3",
+                        lotteryNameUI = "Play 4",
                         state = new Pages.Connecticut(),
                     },
                 }

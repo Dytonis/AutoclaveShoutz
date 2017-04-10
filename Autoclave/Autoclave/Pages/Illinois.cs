@@ -101,6 +101,7 @@ namespace Autoclave.Pages
                 Illinois.LoadHtml(lottery.html);
 
                 int index = -1;
+                string sub = "";
                 int nums = 5;
 
                 if (lottery.lotteryName.Equals("illinois_lotto"))
@@ -110,30 +111,36 @@ namespace Autoclave.Pages
                 else if (lottery.lotteryName.Equals("illinois_luckydaylottoday"))
                 {
                     index = 3;
+                    sub = "Day";
                 }
                 else if (lottery.lotteryName.Equals("illinois_luckydaylottoeve"))
                 {
                     index = 4;
+                    sub = "Eve";
                 }
                 else if (lottery.lotteryName.Equals("illinois_pick3day"))
                 {
                     index = 5;
                     nums = 3;
+                    sub = "Day";
                 }
                 else if (lottery.lotteryName.Equals("illinois_pick3eve"))
                 {
                     index = 8;
                     nums = 3;
+                    sub = "Eve";
                 }
                 else if (lottery.lotteryName.Equals("illinois_pick4day"))
                 {
                     index = 11;
                     nums = 4;
+                    sub = "Day";
                 }
                 else if (lottery.lotteryName.Equals("illinois_pick4eve"))
                 {
                     index = 14;
                     nums = 4;
+                    sub = "Eve";
                 }
 
 
@@ -144,6 +151,7 @@ namespace Autoclave.Pages
                 {
                     date = GetLatestDate(lottery),
                     lottery = lottery,
+                    subdate = sub
                 };
 
                 if(nums == 5)

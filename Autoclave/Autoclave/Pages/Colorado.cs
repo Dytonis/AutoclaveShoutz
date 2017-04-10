@@ -164,6 +164,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes2.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes2[0].InnerText,
@@ -185,6 +189,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes2.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes2[0].InnerText,
@@ -206,6 +214,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes2.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             nodes2[0].InnerText,
@@ -227,6 +239,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Day",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes2.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             Regex.Replace(nodes2[0].InnerText.Replace("&ndash;", "-").Trim(), @"\r\n?|\n", "").Trim(),
@@ -246,6 +262,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Eve",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nodes2.Select(x => x.InnerHtml.Trim()).Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = new string[]
                         {
                             Regex.Replace(nodes2[3].InnerText.Replace("&ndash;", "-").Trim(), @"\r\n?|\n", "").Trim(),

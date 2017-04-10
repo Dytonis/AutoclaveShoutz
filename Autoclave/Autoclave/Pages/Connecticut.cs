@@ -152,6 +152,10 @@ namespace Autoclave.Pages
                             date = GetLatestDate(lottery),
                             lottery = lottery,
                             subdate = "Day",
+                            info = new DebugDecodeInformation()
+                            {
+                                rawNumbersText = nums.Aggregate((i, j) => i + " " + j)
+                            },
                             numbers = nums
                         };
                 }
@@ -164,6 +168,10 @@ namespace Autoclave.Pages
                             date = GetLatestDate(lottery),
                             lottery = lottery,
                             subdate = "Eve",
+                            info = new DebugDecodeInformation()
+                            {
+                                rawNumbersText = nums.Aggregate((i, j) => i + " " + j)
+                            },
                             numbers = nums
                         };
                 }
@@ -173,6 +181,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = nums.Aggregate((i, j) => i + " " + j)
+                        },
                         numbers = nums
                     };
                 }

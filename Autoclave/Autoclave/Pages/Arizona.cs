@@ -111,6 +111,10 @@ namespace Autoclave.Pages
                 {
                     date = GetLatestDate(lottery),
                     lottery = lottery,
+                    info = new DebugDecodeInformation()
+                    {
+                        rawNumbersText = nodes2.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j)
+                    },
                     numbers = new string[]
                     {
                         nodes2[0].InnerText,
@@ -132,6 +136,10 @@ namespace Autoclave.Pages
                 {
                     date = GetLatestDate(lottery),
                     lottery = lottery,
+                    info = new DebugDecodeInformation()
+                    {
+                        rawNumbersText = nodes2.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j)
+                    },
                     numbers = new string[]
                     {
                         nodes2[0].InnerText,
@@ -152,6 +160,10 @@ namespace Autoclave.Pages
                 {
                     date = GetLatestDate(lottery),
                     lottery = lottery,
+                    info = new DebugDecodeInformation()
+                    {
+                        rawNumbersText = nodes2.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j)
+                    },
                     numbers = new string[]
                     {
                         nodes2[0].InnerText,
@@ -175,6 +187,10 @@ namespace Autoclave.Pages
                     date = GetLatestDate(lottery),
                     lottery = lottery,
                     subdate = "AM",
+                    info = new DebugDecodeInformation()
+                    {
+                        rawNumbersText = nodes1ball.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j) + " " + nodes2ball.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j)
+                    },
                     numbers = new string[]
                     {
                         nodes1ball[0].InnerText,
@@ -205,6 +221,10 @@ namespace Autoclave.Pages
                     date = GetLatestDate(lottery),
                     lottery = lottery,
                     subdate = "PM",
+                    info = new DebugDecodeInformation()
+                    {
+                        rawNumbersText = nodes1ball.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j) + " " + nodes2ball.Select(x => x.InnerHtml).Aggregate((i, j) => i + " " + j)
+                    },
                     numbers = new string[]
                     {
                         nodes1ball[0].InnerText,

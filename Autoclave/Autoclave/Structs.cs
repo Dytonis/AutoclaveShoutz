@@ -14,6 +14,7 @@ namespace Autoclave
         public DateTime date;
         public string subdate;
         public Lottery lottery;
+        public DebugDecodeInformation info;
 
         public string ToString(LotteryNumberStringTypes index)
         {
@@ -64,6 +65,11 @@ namespace Autoclave
 
             return "";
         }
+    }
+
+    public struct DebugDecodeInformation
+    {
+        public string rawNumbersText;
     }
 
     public enum LotteryNumberStringTypes

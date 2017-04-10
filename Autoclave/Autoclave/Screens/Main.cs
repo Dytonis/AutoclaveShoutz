@@ -17,7 +17,7 @@ namespace Autoclave
 {
     public partial class Main : Form
     {
-        public string version = "build7 - 4/4/2017 9:22pm";
+        public string version = "build7c - 4/5/2017 6:52pm";
         public bool SlaveRunning;
         public Autoclave autoclave;
         public List<LotteryNumber> NumbersList = new List<LotteryNumber>();

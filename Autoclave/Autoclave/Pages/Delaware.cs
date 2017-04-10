@@ -15,7 +15,7 @@ namespace Autoclave.Pages
         {
             get
             {
-                return "deleware";
+                return "delaware";
             }
         }
 
@@ -23,7 +23,7 @@ namespace Autoclave.Pages
         {
             get
             {
-                return "Deleware";
+                return "Delaware";
             }
         }
 
@@ -117,7 +117,7 @@ namespace Autoclave.Pages
             {
                 if (String.IsNullOrWhiteSpace((lottery.html)))
                 {
-                    throw new MissingFieldException("Deleware.cs", lottery.html);
+                    throw new MissingFieldException("Delaware.cs", lottery.html);
                 }
 
                 HtmlDocument Connecticut = new HtmlDocument();
@@ -140,6 +140,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Day",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = innerText
+                        },
                         numbers = new string[]
                         {
                             innerText[0].ToString(),
@@ -163,6 +167,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Eve",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = innerText
+                        },
                         numbers = new string[]
                         {
                             innerText[0].ToString(),
@@ -187,6 +195,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Day",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = innerText
+                        },
                         numbers = new string[]
                         {
                             innerText[0].ToString(),
@@ -211,6 +223,10 @@ namespace Autoclave.Pages
                         date = GetLatestDate(lottery),
                         lottery = lottery,
                         subdate = "Eve",
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = inner
+                        },
                         numbers = new string[]
                         {
                             inner[0].ToString(),
@@ -236,6 +252,10 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        info = new DebugDecodeInformation()
+                        {
+                            rawNumbersText = innerText
+                        },
                         numbers = new string[]
                         {
                             innerText[0].ToString() + innerText[1].ToString(),

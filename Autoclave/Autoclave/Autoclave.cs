@@ -340,14 +340,19 @@ namespace Autoclave
                     bool numsMatch = false;
                     for(int i = 0; i < num.numbers.Length; i++)
                     {
+                        if (numold.numbers.Length != num.numbers.Length)
+                        {
+                            numsMatch = false;
+                            break;
+                        }
                         if(numold.numbers[i].Equals(num.numbers[i]))
                         {
                             numsMatch = true;
-                            return;
+                            break;
                         }
                     }
 
-                    if(numsMatch || num.date != numold.date) //sense update
+                    if(!numsMatch || num.date != numold.date) //sense update
                     {
                         main.NumbersList.Add(num);
                         File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
