@@ -116,6 +116,10 @@ namespace Autoclave
                                 lottery.LoadHtml(lottery.url);
                                 HandleDateTrigger(DecodeDate(lottery, true), lottery);
                             }
+                            else if (lottery.Action == LotteryDecodeAction.Skip)
+                            {
+                                main.AddToConsole("    ...Action is SKIP.");
+                            }
                             iL++;
                             run++;
 
@@ -264,13 +268,13 @@ namespace Autoclave
 
             throw new NumbersUnavailableExcpetion();
         }
-        public DateTime DecodeDate(Lottery l, bool skipLaod)
+        public DateTime DecodeDate(Lottery l, bool skipLoad)
         {
             for (int tries = 0; tries < 3; tries++)
             {
                 try
                 {
-                    if(!skipLaod)
+                    if(!skipLoad)
                         l.LoadHtml(l.url);
 
                     IStateDecodable decode = l.state as IStateDecodable;

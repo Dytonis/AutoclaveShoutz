@@ -26,6 +26,7 @@ namespace Autoclave.Pages
                    {
                        url = "http://www.mainelottery.com/",
                        lotteryName = "maine_luckyforlife",
+                       Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Maine(),
                    },
@@ -145,6 +146,7 @@ namespace Autoclave.Pages
                    {
                        url = "http://www.myarkansaslottery.com/",
                        lotteryName = "arkansas_luckyforlife",
+                       Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Arkansas(),
                    },
@@ -227,6 +229,7 @@ namespace Autoclave.Pages
                     {
                        url = "https://www.coloradolottery.com/en/",
                        lotteryName = "colorado_luckyforlife",
+                       Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky for Life",
                        state = new Pages.Colorado(),
                    },

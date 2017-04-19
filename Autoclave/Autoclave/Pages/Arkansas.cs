@@ -150,11 +150,11 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[1].InnerText.Trim(),
-                            nodes[3].InnerText.Trim(),
-                            nodes[5].InnerText.Trim(),
-                            nodes[7].InnerText.Trim(),
-                            nodes[9].InnerText.Trim(),
+                            nodes[1].InnerText.Trim().Last().ToString(),
+                            nodes[3].InnerText.Trim().Last().ToString(),
+                            nodes[5].InnerText.Trim().Last().ToString(),
+                            nodes[7].InnerText.Trim().Last().ToString(),
+                            nodes[9].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
@@ -173,12 +173,12 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[1].InnerText.Trim(),
-                            nodes[3].InnerText.Trim(),
-                            nodes[5].InnerText.Trim(),
-                            nodes[7].InnerText.Trim(),
-                            nodes[9].InnerText.Trim(),
-                            nodes[11].InnerText.Trim(),
+                            nodes[1].InnerText.Trim().Last().ToString(),
+                            nodes[3].InnerText.Trim().Last().ToString(),
+                            nodes[5].InnerText.Trim().Last().ToString(),
+                            nodes[7].InnerText.Trim().Last().ToString(),
+                            nodes[9].InnerText.Trim().Last().ToString(),
+                            nodes[11].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
@@ -198,9 +198,9 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[2].InnerText.Trim(),
-                            nodes[4].InnerText.Trim(),
-                            nodes[6].InnerText.Trim(),
+                            nodes[2].InnerText.Trim().Last().ToString(),
+                            nodes[4].InnerText.Trim().Last().ToString(),
+                            nodes[6].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
@@ -220,9 +220,9 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[2].InnerText.Trim(),
-                            nodes[4].InnerText.Trim(),
-                            nodes[6].InnerText.Trim(),
+                            nodes[2].InnerText.Trim().Last().ToString(),
+                            nodes[4].InnerText.Trim().Last().ToString(),
+                            nodes[6].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
@@ -242,10 +242,10 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[2].InnerText.Trim(),
-                            nodes[4].InnerText.Trim(),
-                            nodes[6].InnerText.Trim(),
-                            nodes[8].InnerText.Trim(),
+                            nodes[2].InnerText.Trim().Last().ToString(),
+                            nodes[4].InnerText.Trim().Last().ToString(),
+                            nodes[6].InnerText.Trim().Last().ToString(),
+                            nodes[8].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
@@ -265,10 +265,10 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[2].InnerText.Trim(),
-                            nodes[4].InnerText.Trim(),
-                            nodes[6].InnerText.Trim(),
-                            nodes[8].InnerText.Trim(),
+                            nodes[2].InnerText.Trim().Last().ToString(),
+                            nodes[4].InnerText.Trim().Last().ToString(),
+                            nodes[6].InnerText.Trim().Last().ToString(),
+                            nodes[8].InnerText.Trim().Last().ToString(),
                         }
                     };
                 }
