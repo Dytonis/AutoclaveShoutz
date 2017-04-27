@@ -585,6 +585,54 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                     },
                 }
+            },
+            new Iowa
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/AON.aspx",
+                        lotteryName = "iowa_allornothingday",
+                        lotteryNameUI = "All or Nothing",
+                        state = new Pages.Iowa(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/AON.aspx",
+                        lotteryName = "iowa_allornothingeve",
+                        lotteryNameUI = "All or Nothing",
+                        state = new Pages.Iowa(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/Pick3.aspx",
+                        lotteryName = "iowa_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Iowa(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/Pick3.aspx",
+                        lotteryName = "iowa_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Iowa(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/Pick3.aspx",
+                        lotteryName = "iowa_pick4day",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Iowa(),
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.ialottery.com/Pages/Games-Online/Pick3.aspx",
+                        lotteryName = "iowa_pick4eve",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Iowa(),
+                    },
+                }
             }
         };
     }
