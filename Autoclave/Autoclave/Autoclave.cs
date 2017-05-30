@@ -93,7 +93,6 @@ namespace Autoclave
                 int iS = 0;
                 foreach (State state in States.AllStates)
                 {
-                    state.main = main;
                     int iL = 0;
                     foreach (Lottery lottery in state.lotteries)
                     {

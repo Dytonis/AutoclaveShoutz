@@ -36,13 +36,13 @@ namespace Launcher
                 Console.WriteLine("");
                 Console.WriteLine("Commands Available:");
 
-                Console.WriteLine(" - \"launch\"          * Launch Autoclave");
-                //Console.WriteLine(" - - \"-nogui\"         * Launch with command line only");
-                Console.WriteLine(" - \"update\"          * Update Autoclave");
-                Console.WriteLine(" - - \"-force\"        * Force the installation of the latest version");
-                Console.WriteLine(" - - \"-launch\"       * Launch once completed");
-                Console.WriteLine(" - \"check\"           * Check for updates");
-                Console.WriteLine(" - \"help\"            * Print this text");
+                Console.WriteLine(" . \"launch\"          * Launch Autoclave");
+                Console.WriteLine(" . . \"-nogui\"        * Launch with command line only");
+                Console.WriteLine(" . \"update\"          * Update Autoclave");
+                Console.WriteLine(" . . \"-force\"        * Force the installation of the latest version");
+                Console.WriteLine(" . . \"-launch\"       * Launch once completed");
+                Console.WriteLine(" . \"check\"           * Check for updates");
+                Console.WriteLine(" . \"help\"            * Print this text");
             }
             else
             {
@@ -70,7 +70,17 @@ namespace Launcher
                 {
                     if (cmds[0] == "launch")
                     {
-                        if (File.Exists("Autoclave/Autoclave.exe"))
+                        if(command.Contains("-nogui"))
+                        {
+                            if(File.Exists("Autoclave/Autoclave_Nogui.exe"))
+                            {
+                                string current = Directory.GetCurrentDirectory();
+                                System.Diagnostics.Process.Start(current + "/Autoclave/Autoclave_Nogui.exe");
+                            }
+                            else
+                                Console.WriteLine("Autoclave_Nogui not installed. Please run \'update\'.");
+                        }
+                        else if (File.Exists("Autoclave/Autoclave.exe"))
                         {
                             string current = Directory.GetCurrentDirectory();
                             System.Diagnostics.Process.Start(current + "/Autoclave/Autoclave.exe");

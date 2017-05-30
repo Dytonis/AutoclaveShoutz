@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Autoclave;
+using Autoclave_Nogui;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +11,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Autoclave
+namespace Autoclave_Nogui
 {
     public partial class SequentialSlave : Form
     {
-        public Main main;
         public int indexThrough;
         public List<LotteryNumber> Sequence = new List<LotteryNumber>();
         public float timeSpent;
@@ -23,15 +24,23 @@ namespace Autoclave
             InitializeComponent();
         }
 
+        public void init()
+        {
+            LoadLottery(0);
+            BringToFront();
+        }
+
         public void LoadLottery(int index)
         {
-            main.SlaveRunning = true;
-            richTextBox1.Text = Sequence[index].ToString(LotteryNumberStringTypes.Numbers);
-            GameText.Text = Sequence[index].lottery.lotteryNameUI;
-            TimeText.Text = Sequence[index].subdate;
-            StateText.Text = Sequence[index].lottery.state.stateNameUI;
-            DateText.Text = Sequence[index].date.ToShortDateString();
-            SeqText.Text = (indexThrough + 1) + " / " + Sequence.Count;
+            if (Sequence.Count > 0)
+            {
+                richTextBox1.Text = Sequence[index].ToString(LotteryNumberStringTypes.Numbers);
+                GameText.Text = Sequence[index].lottery.lotteryNameUI;
+                TimeText.Text = Sequence[index].subdate;
+                StateText.Text = Sequence[index].lottery.state.stateNameUI;
+                DateText.Text = Sequence[index].date.ToShortDateString();
+                SeqText.Text = (indexThrough + 1) + " / " + Sequence.Count;
+            }
 
             if(checkBox1.Checked)
             {
@@ -49,12 +58,9 @@ namespace Autoclave
             }
             else
             {
-                if (main != null)
-                {
-                    main.SlaveFinished();
-                    main.SlaveRunning = false;
-                    this.Close();
-                }
+                Program.SlaveFinished();
+                this.Close();
+                
             }
         }
 
@@ -72,6 +78,11 @@ namespace Autoclave
                 LoadLottery(indexThrough);
                 SeqText.Text = (indexThrough) + " / " + Sequence.Count;
             }
+        }
+
+        private void SequentialSlave_Load(object sender, EventArgs e)
+        {
+            init();
         }
     }
 }

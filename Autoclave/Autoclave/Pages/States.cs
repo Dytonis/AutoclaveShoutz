@@ -633,6 +633,60 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                     },
                 }
+            },
+            new Kansas
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "https://www.kslottery.com/",
+                        lotteryName = "kansas_cash",
+                        lotteryNameUI = "Super Cash",
+                        state = new Pages.Kansas(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.kslottery.com/",
+                        lotteryName = "kansas_2by2",
+                        lotteryNameUI = "2 by 2",
+                        state = new Pages.Kansas(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.kslottery.com/",
+                        lotteryName = "kansas_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Kansas(),
+                    },
+                    new Lottery
+                    {
+                        url = "https://www.kslottery.com/",
+                        lotteryName = "kansas_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Kansas(),
+                    },
+                }
+            },
+            new Louisiana
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://louisianalottery.com/lotto",
+                        lotteryName = "louisiana_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Louisiana()
+                    },
+                    new Lottery
+                    {
+                        url = "http://louisianalottery.com/lotto",
+                        lotteryName = "louisiana_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Louisiana()
+                    },
+                }
             }
         };
     }

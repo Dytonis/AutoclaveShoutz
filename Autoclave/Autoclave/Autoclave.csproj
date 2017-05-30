@@ -67,6 +67,8 @@
     <Compile Include="Pages\Georgia.cs" />
     <Compile Include="Pages\Idaho.cs" />
     <Compile Include="Pages\Illinois.cs" />
+    <Compile Include="Pages\Louisiana.cs" />
+    <Compile Include="Pages\Kansas.cs" />
     <Compile Include="Pages\Iowa.cs" />
     <Compile Include="Pages\States.cs" />
     <Compile Include="Pages\Maine.cs" />
