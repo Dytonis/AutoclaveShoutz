@@ -36,6 +36,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,6 +63,10 @@
     <ProjectReference Include="..\Autoclave\Autoclave.csproj">
       <Project>{ff040c30-cf4b-4394-9d27-1e08966c0292}</Project>
       <Name>Autoclave</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEntryAPI\DataEntryAPI.csproj">
+      <Project>{c7fd3551-76ae-4da2-a770-31913907bc33}</Project>
+      <Name>DataEntryAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

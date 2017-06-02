@@ -125,6 +125,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Day",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml
@@ -147,6 +148,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Eve",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml
@@ -169,6 +171,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Day",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml
@@ -192,6 +195,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Eve",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml
@@ -215,6 +219,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Day",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml
@@ -239,6 +244,7 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Eve",
                         info = new DebugDecodeInformation()
                         {
                             rawNumbersText = node.InnerHtml

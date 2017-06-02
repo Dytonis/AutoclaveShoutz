@@ -11,6 +11,8 @@ namespace Autoclave
     public struct LotteryNumber
     {
         public string[] numbers;
+        public string[] specials;
+        public string multiplier;
         public DateTime date;
         public string subdate;
         public Lottery lottery;
@@ -94,6 +96,7 @@ namespace Autoclave
         public string url;
         public string lotteryName;
         public string lotteryNameUI;
+        public UInt32 lottery_id;
         public List<DateTime> UpdateTimes;
         public IStateDecodable state;
         public LotteryDecodeAction Action;

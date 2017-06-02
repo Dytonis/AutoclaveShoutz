@@ -32,7 +32,7 @@ namespace Autoclave_Nogui
             MainTimer.Elapsed += MainTimer_Elapsed;
             MainTimer.Start();
             Status = ProgramStatus.Program_Idle;
-            Action = ProgramAction.Action_PopSlave;
+            Action = ProgramAction.Action_Full;
             InputLoop();
         }
 
@@ -187,45 +187,58 @@ namespace Autoclave_Nogui
                     iS++;
                 }
 
-                Status = ProgramStatus.Program_Idle;
-
-                if((Action == ProgramAction.Action_PopSlave || Action == ProgramAction.Action_PopSlaveThenApply) && NumbersList.Count > 0)
-                {
-                    Status = ProgramStatus.Program_Idle;
-
-                    AddToConsole("");
-                    AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
-                    foreach (LotteryNumber n in NumbersList)
-                    {
-                        AddToConsole("    [" + n.lottery.lotteryName + "]");
-                    }
-                    AddToConsole("");
-
-                    Slave = new SequentialSlave();
-                    Slave.Sequence = NumbersList;
-                    SystemSounds.Exclamation.Play();
-
-                    Slave.ShowDialog();
-
-                    NumbersList.Clear();
-                }
-                else if(Action == ProgramAction.Action_Full)
-                {
-                    AddToConsole("");
-                    AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
-                    foreach(LotteryNumber n in NumbersList)
-                    {
-                        AddToConsole("    [" + n.lottery.lotteryName + "]");
-                    }
-                    AddToConsole("");
-                }
-                else
-                {
-                    Status = ProgramStatus.Program_Waiting;
-                }
+                CycleEndedAsync();
             }));
 
             t.Start();
+        }
+
+        private static async void CycleEndedAsync()
+        {
+            Status = ProgramStatus.Program_Idle;
+
+            if ((Action == ProgramAction.Action_PopSlave || Action == ProgramAction.Action_PopSlaveThenApply) && NumbersList.Count > 0)
+            {
+                Status = ProgramStatus.Program_Idle;
+
+                AddToConsole("");
+                AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
+                foreach (LotteryNumber n in NumbersList)
+                {
+                    AddToConsole("    [" + n.lottery.lotteryName + "]");
+                    TextUtils.DashBox("Deploying updates to LH.com...");
+                }
+                AddToConsole("");
+
+                Slave = new SequentialSlave();
+                Slave.Sequence = NumbersList;
+                SystemSounds.Exclamation.Play();
+
+                Slave.ShowDialog();
+
+                NumbersList.Clear();
+            }
+            else if (Action == ProgramAction.Action_Full)
+            {
+                AddToConsole("");
+                AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
+                foreach (LotteryNumber n in NumbersList)
+                {
+                    AddToConsole("    [" + n.lottery.lotteryName + "]");
+                }
+                AddToConsole("");
+                AddToConsole("Creating JSON object...");
+
+                DataEntryAPI.EntryImporterWebRequest request = NumbersListToConcreteJson.ToJson(NumbersList);
+
+                AddToConsole("Complete.");
+
+                //DataEntryAPI.EntryImporterWebResponse response = await DataEntryAPI.Entry.EntryImporter(request);
+            }
+            else
+            {
+                Status = ProgramStatus.Program_Waiting;
+            }
         }
 
         private static void UpdateStatusText(string v)
@@ -487,5 +500,58 @@ namespace Autoclave_Nogui
         Action_PopSlave,
         Action_PopSlaveThenApply,
         Action_Full,
+    }
+
+    public class TextUtils
+    {
+        public static void DashBox(string text)
+        {
+            Console.WriteLine();
+            Console.Write("////");
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write("/");
+            }
+            Console.WriteLine("////");
+            Console.WriteLine("//// " + text + " ////");
+            Console.Write("////");
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.Write("/");
+            }
+            Console.Write("////");
+        }
+    }
+
+    public class NumbersListToConcreteJson
+    {
+        public static DataEntryAPI.EntryImporterWebRequest ToJson(List<LotteryNumber> list)
+        {
+            DataEntryAPI.EntryImporterWebRequest request = new DataEntryAPI.EntryImporterWebRequest();
+
+            List<DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData> dataList = new List<DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData>();
+
+            if (DataEntryAPI.Auth.isProduction)
+                request.data_key = DataEntryAPI.Auth.AuthToken_Prod;
+            else
+                request.data_key = DataEntryAPI.Auth.AutoToken_Test;
+
+            foreach(LotteryNumber n in list)
+            {
+                DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData data = new DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData();
+
+                data.draw_date = n.date.ToShortDateString();
+                data.picks = n.numbers;
+                data.multiplier = n.multiplier;
+                data.lottery_id = n.lottery.lottery_id;
+                data.specials = n.specials;
+
+                dataList.Add(data);
+            }
+
+            request.draw_data = dataList.ToArray();
+
+            return request;
+        }
     }
 }
