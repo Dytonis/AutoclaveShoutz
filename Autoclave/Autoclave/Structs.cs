@@ -90,6 +90,12 @@ namespace Autoclave
         Skip
     }
 
+    public enum FullAutoAction
+    {
+        DoNothing,
+        SubmitFull
+    }
+
     public struct Lottery
     {
         public string html;
@@ -100,6 +106,7 @@ namespace Autoclave
         public List<DateTime> UpdateTimes;
         public IStateDecodable state;
         public LotteryDecodeAction Action;
+        public FullAutoAction Submit;
 
         public void LoadHtml(string url)
         {

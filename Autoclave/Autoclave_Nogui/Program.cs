@@ -32,7 +32,7 @@ namespace Autoclave_Nogui
             MainTimer.Elapsed += MainTimer_Elapsed;
             MainTimer.Start();
             Status = ProgramStatus.Program_Idle;
-            Action = ProgramAction.Action_Full;
+            Action = ProgramAction.Action_PopSlaveThenApply;
             InputLoop();
         }
 
@@ -41,10 +41,23 @@ namespace Autoclave_Nogui
             while (true)
             {
                 string command = Console.ReadLine().ToLower();
+                string[] splits = command.Split(' ');
 
-                if(command == "start")
+                if(splits[0] == "start")
                 {
                     RenderTimer = 10000;
+                    if (splits.Length >= 2)
+                    {
+                        try
+                        {
+                            RenderTimer = Convert.ToInt16(splits[1]) * 1000;
+                        }
+                        catch
+                        {
+                            AddToConsole("Incorrect format.");
+                            continue;
+                        }
+                    }
                     Status = ProgramStatus.Program_Waiting;
                     AddToConsole("AUTOCLAVE Started");
                 }
@@ -62,6 +75,10 @@ namespace Autoclave_Nogui
                     Slave.ShowDialog();
 
                     NumbersList.Clear();
+                }
+                else
+                {
+                    AddToConsole("\'" + command + "\' not recognized.");
                 }
             }
         }
@@ -87,7 +104,7 @@ namespace Autoclave_Nogui
             {
                 CurrentRenderTimerCount += DeltaTime;
 
-                if (lateUpdate >= 2)
+                if (lateUpdate >= 6)
                 {
                     AddToConsole(CurrentRenderTimerCount + "ms of " + RenderTimer + "ms elapsed.");
                     lateUpdate = 0;
@@ -197,16 +214,15 @@ namespace Autoclave_Nogui
         {
             Status = ProgramStatus.Program_Idle;
 
-            if ((Action == ProgramAction.Action_PopSlave || Action == ProgramAction.Action_PopSlaveThenApply) && NumbersList.Count > 0)
+            if ((Action == ProgramAction.Action_PopSlave) && NumbersList.Count > 0)
             {
-                Status = ProgramStatus.Program_Idle;
+                Status = ProgramStatus.Program_Applying;
 
                 AddToConsole("");
                 AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
                 foreach (LotteryNumber n in NumbersList)
                 {
                     AddToConsole("    [" + n.lottery.lotteryName + "]");
-                    TextUtils.DashBox("Deploying updates to LH.com...");
                 }
                 AddToConsole("");
 
@@ -217,8 +233,10 @@ namespace Autoclave_Nogui
                 Slave.ShowDialog();
 
                 NumbersList.Clear();
+
+                Status = ProgramStatus.Program_Waiting;
             }
-            else if (Action == ProgramAction.Action_Full)
+            else if (Action == ProgramAction.Action_Full || Action == ProgramAction.Action_PopSlaveThenApply)
             {
                 AddToConsole("");
                 AddToConsole("Autoclave detected " + NumbersList.Count + " updates.");
@@ -227,13 +245,43 @@ namespace Autoclave_Nogui
                     AddToConsole("    [" + n.lottery.lotteryName + "]");
                 }
                 AddToConsole("");
+
+                if(NumbersList.Count <= 0)
+                {
+                    Status = ProgramStatus.Program_Waiting;
+                    return;
+                }
+
+                Slave = new SequentialSlave();
+                Slave.Sequence = NumbersList;
+                SystemSounds.Exclamation.Play();
+
+                Slave.ShowDialog();
+
+                NumbersList.Clear();
+
+                TextUtils.DashBox("Deploying updates to LH.com...");
+                Console.WriteLine();
+                Console.WriteLine();
                 AddToConsole("Creating JSON object...");
 
                 DataEntryAPI.EntryImporterWebRequest request = NumbersListToConcreteJson.ToJson(NumbersList);
 
                 AddToConsole("Complete.");
-
-                //DataEntryAPI.EntryImporterWebResponse response = await DataEntryAPI.Entry.EntryImporter(request);
+                if (request.draw_data.Length <= 0)
+                {
+                    AddToConsole(" --- All updates are FullAutoAction.DoNothing. No updates will be deployed.");
+                    AddToConsole("");
+                    Status = ProgramStatus.Program_Waiting;
+                    return;
+                }
+                else
+                {
+                    AddToConsole("Submitting data to LHAPI...");
+                    DataEntryAPI.EntryImporterWebResponse response = await DataEntryAPI.Entry.EntryImporter(request);
+                    AddToConsole("Complete.");
+                    Status = ProgramStatus.Program_Waiting;
+                }
             }
             else
             {
@@ -508,14 +556,14 @@ namespace Autoclave_Nogui
         {
             Console.WriteLine();
             Console.Write("////");
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length + 2; i++)
             {
                 Console.Write("/");
             }
             Console.WriteLine("////");
             Console.WriteLine("//// " + text + " ////");
             Console.Write("////");
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length + 2; i++)
             {
                 Console.Write("/");
             }
@@ -540,13 +588,22 @@ namespace Autoclave_Nogui
             {
                 DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData data = new DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData();
 
-                data.draw_date = n.date.ToShortDateString();
-                data.picks = n.numbers;
-                data.multiplier = n.multiplier;
-                data.lottery_id = n.lottery.lottery_id;
-                data.specials = n.specials;
+                if (n.lottery.Submit == FullAutoAction.SubmitFull)
 
-                dataList.Add(data);
+                {
+                    data.draw_date = n.date.ToShortDateString();
+                    data.picks = n.numbers;
+                    data.multiplier = n.multiplier;
+                    data.lottery_id = n.lottery.lottery_id;
+                    data.specials = n.specials;
+
+                    foreach (string p in data.picks)
+                    {
+                        p.Trim();
+                    }
+
+                    dataList.Add(data);
+                }
             }
 
             request.draw_data = dataList.ToArray();

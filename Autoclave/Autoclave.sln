@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autoclave_Nogui", "Autoclave_Nogui\Autoclave_Nogui.csproj", "{F7ACF87B-16A3-4B2E-AFE2-C30F165A7031}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntryAPI", "DataEntryAPI\DataEntryAPI.csproj", "{C7FD3551-76AE-4DA2-A770-31913907BC33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntryAPI2", "DataEntryAPI2\DataEntryAPI2.csproj", "{4CCAB19E-64F0-4448-BA2F-B8ADB0427F72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{F7ACF87B-16A3-4B2E-AFE2-C30F165A7031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7ACF87B-16A3-4B2E-AFE2-C30F165A7031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7ACF87B-16A3-4B2E-AFE2-C30F165A7031}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7FD3551-76AE-4DA2-A770-31913907BC33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7FD3551-76AE-4DA2-A770-31913907BC33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7FD3551-76AE-4DA2-A770-31913907BC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7FD3551-76AE-4DA2-A770-31913907BC33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCAB19E-64F0-4448-BA2F-B8ADB0427F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCAB19E-64F0-4448-BA2F-B8ADB0427F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCAB19E-64F0-4448-BA2F-B8ADB0427F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCAB19E-64F0-4448-BA2F-B8ADB0427F72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

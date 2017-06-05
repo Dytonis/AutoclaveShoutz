@@ -21,6 +21,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_megabucks",
                        lotteryNameUI = "Megabucks",
                        state = new Pages.Maine(),
+                       lottery_id = 188
                    },
                    new Lottery
                    {
@@ -29,6 +30,7 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Maine(),
+                       lottery_id = 0
                    },
                    new Lottery
                    {
@@ -36,6 +38,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_hotlottosizzler",
                        lotteryNameUI = "Hot Lotto Sizzler",
                        state = new Pages.Maine(),
+                       lottery_id = 0
                    },
                    new Lottery
                    {
@@ -43,6 +46,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_pick3day",
                        lotteryNameUI = "Pick 3",
                        state = new Pages.Maine(),
+                       lottery_id = 191
                    },
                    new Lottery
                    {
@@ -50,6 +54,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_pick3eve",
                        lotteryNameUI = "Pick 3",
                        state = new Pages.Maine(),
+                       lottery_id = 192
                    },
                    new Lottery
                    {
@@ -57,6 +62,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_pick4day",
                        lotteryNameUI = "Pick 4",
                        state = new Pages.Maine(),
+                       lottery_id = 193
                    },
                    new Lottery
                    {
@@ -64,6 +70,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_pick4eve",
                        lotteryNameUI = "Pick 4",
                        state = new Pages.Maine(),
+                       lottery_id = 194
                    },
                    new Lottery
                    {
@@ -71,6 +78,7 @@ namespace Autoclave.Pages
                        lotteryName = "maine_gimme5",
                        lotteryNameUI = "Gimme 5",
                        state = new Pages.Maine(),
+                       lottery_id = 190
                    },
                    new Lottery
                    {
@@ -78,7 +86,8 @@ namespace Autoclave.Pages
                        lotteryName = "maine_wptallin",
                        lotteryNameUI = "WPT All In",
                        state = new Pages.Maine(),
-                       Action = LotteryDecodeAction.DateTrigger
+                       Action = LotteryDecodeAction.DateTrigger,
+                       lottery_id = 0,
                    },
                },
             },
@@ -92,6 +101,7 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_thepick",
                         lotteryNameUI = "The Pick",
                         state = new Pages.Arizona(),
+                        lottery_id = 43
                     },
                     new Lottery
                     {
@@ -99,6 +109,7 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_fantasy5",
                         lotteryNameUI = "Fantasy 5",
                         state = new Pages.Arizona(),
+                        lottery_id = 44
                     },
                     new Lottery
                     {
@@ -106,6 +117,7 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_pick3",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Arizona(),
+                        lottery_id = 47
                     },
                     new Lottery
                     {
@@ -113,7 +125,8 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_5cardcash",
                         lotteryNameUI = "5 Card Cash",
                         state = new Pages.Arizona(),
-                        Action = LotteryDecodeAction.DateTrigger
+                        Action = LotteryDecodeAction.DateTrigger,
+                        lottery_id = 311
                     },
                     new Lottery
                     {
@@ -121,6 +134,7 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_allornothingday",
                         lotteryNameUI = "All or Nothing",
                         state = new Pages.Arizona(),
+                        lottery_id = 264
                     },
                     new Lottery
                     {
@@ -128,6 +142,7 @@ namespace Autoclave.Pages
                         lotteryName = "arizona_allornothingeve",
                         lotteryNameUI = "All or Nothing",
                         state = new Pages.Arizona(),
+                        lottery_id = 265
                     },
                 }
             },
@@ -141,6 +156,7 @@ namespace Autoclave.Pages
                        lotteryName = "arkansas_nsj",
                        lotteryNameUI = "Natural State Jackpot",
                        state = new Pages.Arkansas(),
+                       lottery_id = 52
                    },
                    new Lottery
                    {
@@ -149,6 +165,7 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Arkansas(),
+                       lottery_id = 0
                    },
                    new Lottery
                    {
@@ -156,6 +173,7 @@ namespace Autoclave.Pages
                        lotteryName = "arkansas_cash3day",
                        lotteryNameUI = "Cash 3",
                        state = new Pages.Arkansas(),
+                       lottery_id = 48
                    },
                    new Lottery
                    {
@@ -163,6 +181,7 @@ namespace Autoclave.Pages
                        lotteryName = "arkansas_cash3eve",
                        lotteryNameUI = "Cash 3",
                        state = new Pages.Arkansas(),
+                       lottery_id = 49
                    },
                    new Lottery
                    {
@@ -170,6 +189,7 @@ namespace Autoclave.Pages
                        lotteryName = "arkansas_cash4day",
                        lotteryNameUI = "Cash 4",
                        state = new Pages.Arkansas(),
+                       lottery_id = 50
                    },
                    new Lottery
                    {
@@ -177,6 +197,7 @@ namespace Autoclave.Pages
                        lotteryName = "arkansas_cash4eve",
                        lotteryNameUI = "Cash 4",
                        state = new Pages.Arkansas(),
+                       lottery_id = 51
                    },
                 }
             },
@@ -190,6 +211,7 @@ namespace Autoclave.Pages
                        lotteryName = "california_superlotto",
                        lotteryNameUI = "Super Lotto",
                        state = new Pages.California(),
+                       lottery_id = 54
                     },
                     new Lottery
                     {
@@ -197,6 +219,7 @@ namespace Autoclave.Pages
                        lotteryName = "california_fantasy5",
                        lotteryNameUI = "Fantasy 5",
                        state = new Pages.California(),
+                       lottery_id = 55
                     },
                     new Lottery
                     {
@@ -204,6 +227,7 @@ namespace Autoclave.Pages
                        lotteryName = "california_daily3day",
                        lotteryNameUI = "Daily 3",
                        state = new Pages.California(),
+                       lottery_id = 57
                     },
                     new Lottery
                     {
@@ -211,6 +235,7 @@ namespace Autoclave.Pages
                        lotteryName = "california_daily3eve",
                        lotteryNameUI = "Daily 3",
                        state = new Pages.California(),
+                       lottery_id = 58
                     },
                     new Lottery
                     {
@@ -218,6 +243,7 @@ namespace Autoclave.Pages
                        lotteryName = "california_daily4",
                        lotteryNameUI = "Daily 4",
                        state = new Pages.California(),
+                       lottery_id = 56
                     },
                 }
             },
@@ -232,6 +258,7 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky for Life",
                        state = new Pages.Colorado(),
+                       lottery_id = 0
                    },
                     new Lottery
                     {
@@ -239,6 +266,7 @@ namespace Autoclave.Pages
                        lotteryName = "colorado_lotto",
                        lotteryNameUI = "Lotto",
                        state = new Pages.Colorado(),
+                       lottery_id = 2
                    },
                     new Lottery
                     {
@@ -246,6 +274,7 @@ namespace Autoclave.Pages
                        lotteryName = "colorado_cash5",
                        lotteryNameUI = "Cash 5",
                        state = new Pages.Colorado(),
+                       lottery_id = 3
                    },
                     new Lottery
                     {
@@ -253,6 +282,8 @@ namespace Autoclave.Pages
                        lotteryName = "colorado_pick3day",
                        lotteryNameUI = "Pick 3",
                        state = new Pages.Colorado(),
+                       Action = LotteryDecodeAction.Skip,
+                       lottery_id = 0
                    },
                     new Lottery
                     {
@@ -260,6 +291,8 @@ namespace Autoclave.Pages
                        lotteryName = "colorado_pick3eve",
                        lotteryNameUI = "Pick 3",
                        state = new Pages.Colorado(),
+                       Action = LotteryDecodeAction.Skip,
+                       lottery_id = 0
                    },
                 }
             },
@@ -273,6 +306,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_luckylinksday",
                         lotteryNameUI = "Lucky Links",
                         state = new Pages.Connecticut(),
+                        lottery_id = 306
                     },
                     new Lottery
                     {
@@ -280,6 +314,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_luckylinkseve",
                         lotteryNameUI = "Lucky Links",
                         state = new Pages.Connecticut(),
+                        lottery_id = 307
                     },
                     new Lottery
                     {
@@ -287,6 +322,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_lotto",
                         lotteryNameUI = "Lotto",
                         state = new Pages.Connecticut(),
+                        lottery_id = 121
                     },
                     new Lottery
                     {
@@ -294,6 +330,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_cash5",
                         lotteryNameUI = "Lotto",
                         state = new Pages.Connecticut(),
+                        lottery_id = 122
                     },
                     new Lottery
                     {
@@ -301,6 +338,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_play3day",
                         lotteryNameUI = "Play 3",
                         state = new Pages.Connecticut(),
+                        lottery_id = 124
                     },
                     new Lottery
                     {
@@ -308,6 +346,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_play3eve",
                         lotteryNameUI = "Play 3",
                         state = new Pages.Connecticut(),
+                        lottery_id = 125
                     },
                     new Lottery
                     {
@@ -315,6 +354,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_play4day",
                         lotteryNameUI = "Play 4",
                         state = new Pages.Connecticut(),
+                        lottery_id = 126
                     },
                     new Lottery
                     {
@@ -322,6 +362,7 @@ namespace Autoclave.Pages
                         lotteryName = "connecticut_play4eve",
                         lotteryNameUI = "Play 4",
                         state = new Pages.Connecticut(),
+                        lottery_id = 127
                     },
                 }
             },
@@ -335,6 +376,7 @@ namespace Autoclave.Pages
                         lotteryName = "deleware_play3day",
                         lotteryNameUI = "Play 3",
                         state = new Pages.Delaware(),
+                        lottery_id = 130
                     },
                     new Lottery
                     {
@@ -342,6 +384,7 @@ namespace Autoclave.Pages
                         lotteryName = "deleware_play3eve",
                         lotteryNameUI = "Play 3",
                         state = new Pages.Delaware(),
+                        lottery_id = 131
                     },
                     new Lottery
                     {
@@ -349,6 +392,7 @@ namespace Autoclave.Pages
                         lotteryName = "deleware_play4day",
                         lotteryNameUI = "Play 4",
                         state = new Pages.Delaware(),
+                        lottery_id = 132
                     },
                     new Lottery
                     {
@@ -356,6 +400,7 @@ namespace Autoclave.Pages
                         lotteryName = "deleware_play4eve",
                         lotteryNameUI = "Play 4",
                         state = new Pages.Delaware(),
+                        lottery_id = 133
                     },
                     new Lottery
                     {
@@ -363,6 +408,7 @@ namespace Autoclave.Pages
                         lotteryName = "deleware_multiwin",
                         lotteryNameUI = "Multiwin",
                         state = new Pages.Delaware(),
+                        lottery_id = 128
                     },
                 }
             },
@@ -376,6 +422,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_3day",
                         lotteryNameUI = "DC 3",
                         state = new Pages.DC(),
+                        lottery_id = 70
                     },
                     new Lottery
                     {
@@ -383,6 +430,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_3eve",
                         lotteryNameUI = "DC 3",
                         state = new Pages.DC(),
+                        lottery_id = 71
                     },
                     new Lottery
                     {
@@ -390,6 +438,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_4day",
                         lotteryNameUI = "DC 4",
                         state = new Pages.DC(),
+                        lottery_id = 72
                     },
                     new Lottery
                     {
@@ -397,6 +446,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_4eve",
                         lotteryNameUI = "DC 4",
                         state = new Pages.DC(),
+                        lottery_id = 73
                     },
                     new Lottery
                     {
@@ -404,6 +454,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_5day",
                         lotteryNameUI = "DC 5",
                         state = new Pages.DC(),
+                        lottery_id = 74
                     },
                     new Lottery
                     {
@@ -411,6 +462,7 @@ namespace Autoclave.Pages
                         lotteryName = "dc_5eve",
                         lotteryNameUI = "DC 5",
                         state = new Pages.DC(),
+                        lottery_id = 75
                     },
                 }
             },
@@ -424,6 +476,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_lotto",
                         lotteryNameUI = "Lotto",
                         state = new Pages.Florida(),
+                        lottery_id = 5
                     },
                     new Lottery
                     {
@@ -431,6 +484,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_luckymoney",
                         lotteryNameUI = "Lucky Money",
                         state = new Pages.Florida(),
+                        lottery_id = 271
                     },
                     new Lottery
                     {
@@ -438,6 +492,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_fantasy5",
                         lotteryNameUI = "Fantasy 5",
                         state = new Pages.Florida(),
+                        lottery_id = 7
                     },
                     new Lottery
                     {
@@ -445,6 +500,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick2day",
                         lotteryNameUI = "Pick 2",
                         state = new Pages.Florida(),
+                        lottery_id = 317
                     },
                     new Lottery
                     {
@@ -452,6 +508,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick2eve",
                         lotteryNameUI = "Pick 2",
                         state = new Pages.Florida(),
+                        lottery_id = 319
                     },
                     new Lottery
                     {
@@ -459,6 +516,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Florida(),
+                        lottery_id = 10
                     },
                     new Lottery
                     {
@@ -466,6 +524,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Florida(),
+                        lottery_id = 11
                     },
                     new Lottery
                     {
@@ -473,6 +532,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick4day",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Florida(),
+                        lottery_id = 8
                     },
                     new Lottery
                     {
@@ -480,6 +540,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick4eve",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Florida(),
+                        lottery_id = 9
                     },
                     new Lottery
                     {
@@ -487,6 +548,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick5day",
                         lotteryNameUI = "Pick 5",
                         state = new Pages.Florida(),
+                        lottery_id = 318
                     },
                     new Lottery
                     {
@@ -494,6 +556,7 @@ namespace Autoclave.Pages
                         lotteryName = "florida_pick5eve",
                         lotteryNameUI = "Pick 5",
                         state = new Pages.Florida(),
+                        lottery_id = 320
                     },
                 }
             },
@@ -507,6 +570,8 @@ namespace Autoclave.Pages
                         lotteryName = "idaho_cash",
                         lotteryNameUI = "Cash",
                         state = new Pages.Idaho(),
+                        Action = LotteryDecodeAction.Skip,
+                        lottery_id = 0
                     },
                     new Lottery
                     {
@@ -514,6 +579,7 @@ namespace Autoclave.Pages
                         lotteryName = "idaho_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Idaho(),
+                        lottery_id = 144
                     },
                     new Lottery
                     {
@@ -521,6 +587,7 @@ namespace Autoclave.Pages
                         lotteryName = "idaho_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Idaho(),
+                        lottery_id = 145
                     },
                     new Lottery
                     {
@@ -528,6 +595,7 @@ namespace Autoclave.Pages
                         lotteryName = "idaho_weeklygrand",
                         lotteryNameUI = "Weekly Grand",
                         state = new Pages.Idaho(),
+                        lottery_id = 143
                     },
                 }
             },
@@ -541,6 +609,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_lotto",
                         lotteryNameUI = "Lotto",
                         state = new Pages.Illinois(),
+                        lottery_id = 146
                     },
                     new Lottery
                     {
@@ -548,6 +617,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_luckydaylottoday",
                         lotteryNameUI = "Lucky Day Lotto",
                         state = new Pages.Illinois(),
+                        lottery_id = 147
                     },
                     new Lottery
                     {
@@ -555,6 +625,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_luckydaylottoeve",
                         lotteryNameUI = "Lucky Day Lotto",
                         state = new Pages.Illinois(),
+                        lottery_id = 154
                     },
                     new Lottery
                     {
@@ -562,6 +633,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Illinois(),
+                        lottery_id = 150
                     },
                     new Lottery
                     {
@@ -569,6 +641,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Illinois(),
+                        lottery_id = 151
                     },
                     new Lottery
                     {
@@ -576,6 +649,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_pick4day",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Illinois(),
+                        lottery_id = 152
                     },
                     new Lottery
                     {
@@ -583,6 +657,7 @@ namespace Autoclave.Pages
                         lotteryName = "illinois_pick4eve",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Illinois(),
+                        lottery_id = 153
                     },
                 }
             },
@@ -596,6 +671,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_allornothingday",
                         lotteryNameUI = "All or Nothing",
                         state = new Pages.Iowa(),
+                        lottery_id = 257
                     },
                     new Lottery
                     {
@@ -603,6 +679,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_allornothingeve",
                         lotteryNameUI = "All or Nothing",
                         state = new Pages.Iowa(),
+                        lottery_id = 258
                     },
                     new Lottery
                     {
@@ -610,6 +687,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Iowa(),
+                        lottery_id = 16
                     },
                     new Lottery
                     {
@@ -617,6 +695,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Iowa(),
+                        lottery_id = 17
                     },
                     new Lottery
                     {
@@ -624,6 +703,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_pick4day",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Iowa(),
+                        lottery_id = 14
                     },
                     new Lottery
                     {
@@ -631,6 +711,7 @@ namespace Autoclave.Pages
                         lotteryName = "iowa_pick4eve",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Iowa(),
+                        lottery_id = 15
                     },
                 }
             },
@@ -644,6 +725,7 @@ namespace Autoclave.Pages
                         lotteryName = "kansas_cash",
                         lotteryNameUI = "Super Cash",
                         state = new Pages.Kansas(),
+                        lottery_id = 29
                     },
                     new Lottery
                     {
@@ -651,6 +733,7 @@ namespace Autoclave.Pages
                         lotteryName = "kansas_2by2",
                         lotteryNameUI = "2 by 2",
                         state = new Pages.Kansas(),
+                        lottery_id = 30
                     },
                     new Lottery
                     {
@@ -658,6 +741,7 @@ namespace Autoclave.Pages
                         lotteryName = "kansas_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Kansas(),
+                        lottery_id = 312
                     },
                     new Lottery
                     {
@@ -665,6 +749,7 @@ namespace Autoclave.Pages
                         lotteryName = "kansas_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Kansas(),
+                        lottery_id = 31
                     },
                 }
             },
@@ -677,14 +762,32 @@ namespace Autoclave.Pages
                         url = "http://louisianalottery.com/lotto",
                         lotteryName = "louisiana_lotto",
                         lotteryNameUI = "Lotto",
-                        state = new Pages.Louisiana()
+                        state = new Pages.Louisiana(),
+                        lottery_id = 87
                     },
                     new Lottery
                     {
-                        url = "http://louisianalottery.com/lotto",
-                        lotteryName = "louisiana_lotto",
-                        lotteryNameUI = "Lotto",
-                        state = new Pages.Louisiana()
+                        url = "http://louisianalottery.com/easy-5",
+                        lotteryName = "louisiana_easy5",
+                        lotteryNameUI = "Easy 5",
+                        state = new Pages.Louisiana(),
+                        lottery_id = 86
+                    },
+                    new Lottery
+                    {
+                        url = "http://louisianalottery.com/pick-4",
+                        lotteryName = "louisiana_pick4",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.Louisiana(),
+                        lottery_id = 85
+                    },
+                    new Lottery
+                    {
+                        url = "http://louisianalottery.com/pick-3",
+                        lotteryName = "louisiana_pick3",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Louisiana(),
+                        lottery_id = 84
                     },
                 }
             }

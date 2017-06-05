@@ -12,7 +12,7 @@ namespace DataEntryAPI
             string json = await Task.Factory.StartNew(() => JsonConvert.SerializeObject(request));
             StringContent httpContent = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-            using (HttpClient client = new HttpClient())
+            /*using (HttpClient client = new HttpClient())
             {
                 var httpResponse = await client.PostAsync("http://www.lotteryhub.com/api/services/tw_data_importer.php", httpContent);
 
@@ -24,7 +24,9 @@ namespace DataEntryAPI
 
                     return Concrete;
                 }
-            }
+            }*/
+
+            Console.WriteLine(json);
 
             return new EntryImporterWebResponse
             {
