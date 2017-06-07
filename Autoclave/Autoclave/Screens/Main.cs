@@ -282,7 +282,7 @@ namespace Autoclave
                                         {
                                             LotteryNumber num = autoclave.DecodeNumbers(l);
 
-                                            AddToConsole(num.ToString(LotteryNumberStringTypes.Numbers));
+                                            AddToConsole(num.ToString(LotteryNumberStringTypes.NumbersSpecialsMultipliers));
                                         }
                                         else if (l.Action == LotteryDecodeAction.DateTrigger)
                                         {
@@ -304,7 +304,7 @@ namespace Autoclave
                                                 {
                                                     LotteryNumber num = autoclave.DecodeNumbers(l);
 
-                                                    AddToConsole(l.lotteryName + ": " + num.ToString(LotteryNumberStringTypes.Numbers));
+                                                    AddToConsole(l.lotteryName + ": " + num.ToString(LotteryNumberStringTypes.NumbersSpecialsMultipliers));
                                                 }
                                                 else if (l.Action == LotteryDecodeAction.DateTrigger)
                                                 {

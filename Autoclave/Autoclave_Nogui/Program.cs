@@ -43,7 +43,27 @@ namespace Autoclave_Nogui
                 string command = Console.ReadLine().ToLower();
                 string[] splits = command.Split(' ');
 
-                if(splits[0] == "start")
+                if(splits[0] == "action")
+                {
+                    if(splits.Length >= 2)
+                    {
+                        if(splits[1] == "slave")
+                        {
+                            Action = ProgramAction.Action_PopSlave;
+                        }
+                        else if (splits[1] == "mix")
+                        {
+                            Action = ProgramAction.Action_PopSlaveThenApply;
+                        }
+                        else if (splits[1] == "auto")
+                        {
+                            Action = ProgramAction.Action_Full;
+                        }
+                    }
+
+                    AddToConsole("ProgramAction is " + Action.ToString());
+                }
+                else if(splits[0] == "start")
                 {
                     RenderTimer = 10000;
                     if (splits.Length >= 2)
@@ -252,13 +272,14 @@ namespace Autoclave_Nogui
                     return;
                 }
 
-                Slave = new SequentialSlave();
-                Slave.Sequence = NumbersList;
-                SystemSounds.Exclamation.Play();
+                if (Action == ProgramAction.Action_PopSlaveThenApply)
+                {
+                    Slave = new SequentialSlave();
+                    Slave.Sequence = NumbersList;
+                    SystemSounds.Exclamation.Play();
 
-                Slave.ShowDialog();
-
-                NumbersList.Clear();
+                    Slave.ShowDialog();
+                }
 
                 TextUtils.DashBox("Deploying updates to LH.com...");
                 Console.WriteLine();
@@ -287,6 +308,7 @@ namespace Autoclave_Nogui
             {
                 Status = ProgramStatus.Program_Waiting;
             }
+            NumbersList.Clear();
         }
 
         private static void UpdateStatusText(string v)

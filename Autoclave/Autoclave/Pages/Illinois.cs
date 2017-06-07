@@ -106,6 +106,7 @@ namespace Autoclave.Pages
 
                 if (lottery.lotteryName.Equals("illinois_lotto"))
                 {
+                    nums = 6;
                     index = 2;
                 }
                 else if (lottery.lotteryName.Equals("illinois_luckydaylottoday"))
@@ -154,7 +155,23 @@ namespace Autoclave.Pages
                     subdate = sub
                 };
 
-                if(nums == 5)
+                if(nums == 6)
+                {
+                    num.numbers = new string[]
+                    {
+                        nodes[0].InnerText,
+                            nodes[1].InnerText,
+                            nodes[2].InnerText,
+                            nodes[3].InnerText,
+                            nodes[4].InnerText,
+                            nodes[5].InnerText
+                    };
+                    num.specials = new string[]
+                    {
+                        nodes[6].InnerText
+                    };
+                }
+                else if(nums == 5)
                 {
                     num.numbers = new string[]
                     {

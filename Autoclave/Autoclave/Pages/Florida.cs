@@ -176,8 +176,8 @@ namespace Autoclave.Pages
                             nodes[3].InnerText,
                             nodes[4].InnerText,
                             nodes[5].InnerText,
-                            nodes[6].InnerText,
-                        }
+                        },
+                        multiplier = nodes[6].InnerText
                     };
                 }
                 else if (lottery.lotteryName.Equals("florida_luckymoney"))
@@ -195,7 +195,10 @@ namespace Autoclave.Pages
                             nodes[1].InnerText,
                             nodes[2].InnerText,
                             nodes[3].InnerText,
-                            nodes[4].InnerText,
+                        },
+                        specials = new string[]
+                        {
+                            nodes[4].InnerText
                         }
                     };
                 }

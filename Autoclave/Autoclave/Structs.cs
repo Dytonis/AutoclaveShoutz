@@ -13,6 +13,7 @@ namespace Autoclave
         public string[] numbers;
         public string[] specials;
         public string multiplier;
+        public AfterDecodeInformation ADI;
         public DateTime date;
         public string subdate;
         public Lottery lottery;
@@ -20,7 +21,65 @@ namespace Autoclave
 
         public string ToString(LotteryNumberStringTypes index)
         {
-            if(index == LotteryNumberStringTypes.Numbers)
+            if(index == LotteryNumberStringTypes.NumbersSpecialsMultipliers)
+            {
+                string a = "";
+
+                if(ADI == AfterDecodeInformation.NotDrawnOrUnavailable)
+                {
+                    return "ADI is Not Drawn / Unavailable";
+                }
+
+                if (numbers == null)
+                {
+                    return "null";
+                }
+
+                foreach (string s in numbers)
+                {
+                    a += s + " ";
+                }
+
+                if (specials?.Length >= 0)
+                {
+                    a += " [";
+
+                    foreach (string s2 in specials)
+                    {
+                        a += s2 + " ";
+                    }
+
+                    a = a.Trim();
+
+                    if (String.IsNullOrWhiteSpace(multiplier))
+                        a += "]";
+                    else
+                        a += "], ";
+                }
+                if (!String.IsNullOrWhiteSpace(multiplier))
+                {
+                    a += "<" + multiplier + ">";
+                }
+
+
+                a.Trim();
+
+                if(ADI == AfterDecodeInformation.NeedsValidation)
+                {
+                    a += " (NV)";
+                }
+                else if (ADI == AfterDecodeInformation.Invalid)
+                {
+                    a += " (INVALID)";
+                }
+                else if (ADI == AfterDecodeInformation.Valid)
+                {
+                    a += " (OK)";
+                }
+
+                return a;
+            }
+            else if(index == LotteryNumberStringTypes.Numbers)
             {
                 string a = "";
 
@@ -74,12 +133,24 @@ namespace Autoclave
         public string rawNumbersText;
     }
 
+    public enum AfterDecodeInformation
+    {
+        NeedsValidation,
+        Valid,
+        Invalid,
+        NotDrawnOrUnavailable
+    }
+
     public enum LotteryNumberStringTypes
     {
         Numbers,
         NumbersDate,
         NumbersNameDate,
         NumbersName,
+        Specials,
+        Multipliers,
+        NumbersSpecials,
+        NumbersSpecialsMultipliers
     }
 
     public enum LotteryDecodeAction
@@ -103,6 +174,11 @@ namespace Autoclave
         public string lotteryName;
         public string lotteryNameUI;
         public UInt32 lottery_id;
+        public byte UnitLength;
+        public byte NumbersCount;
+        public bool hasMultiplier;
+        public byte SpecialUnitLength;
+        public byte SpecialsCount;
         public List<DateTime> UpdateTimes;
         public IStateDecodable state;
         public LotteryDecodeAction Action;

@@ -124,11 +124,16 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Day",
                         numbers = new string[]
                         {
                             nodes[0].InnerText,
                             nodes[1].InnerText,
                             nodes[2].InnerText,
+                        },
+                        specials = new string[]
+                        {
+                            (Convert.ToInt16(nodes[0].InnerText) + Convert.ToInt16(nodes[1].InnerText) + Convert.ToInt16(nodes[2].InnerText)).ToString()
                         }
                     };
                 }
@@ -143,11 +148,16 @@ namespace Autoclave.Pages
                     {
                         date = GetLatestDate(lottery),
                         lottery = lottery,
+                        subdate = "Eve",
                         numbers = new string[]
                         {
                             nodes[0].InnerText,
                             nodes[1].InnerText,
                             nodes[2].InnerText,
+                        },
+                        specials = new string[]
+                        {
+                            (Convert.ToInt16(nodes[0].InnerText) + Convert.ToInt16(nodes[1].InnerText) + Convert.ToInt16(nodes[2].InnerText)).ToString()
                         }
                     };
                 }

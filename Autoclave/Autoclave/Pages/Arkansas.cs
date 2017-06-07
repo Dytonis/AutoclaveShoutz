@@ -150,11 +150,11 @@ namespace Autoclave.Pages
                         },
                         numbers = new string[]
                         {
-                            nodes[1].InnerText.Trim().Last().ToString(),
-                            nodes[3].InnerText.Trim().Last().ToString(),
-                            nodes[5].InnerText.Trim().Last().ToString(),
-                            nodes[7].InnerText.Trim().Last().ToString(),
-                            nodes[9].InnerText.Trim().Last().ToString(),
+                            nodes[1].InnerText.Trim().ToString(),
+                            nodes[3].InnerText.Trim().ToString(),
+                            nodes[5].InnerText.Trim().ToString(),
+                            nodes[7].InnerText.Trim().ToString(),
+                            nodes[9].InnerText.Trim().ToString(),
                         }
                     };
                 }

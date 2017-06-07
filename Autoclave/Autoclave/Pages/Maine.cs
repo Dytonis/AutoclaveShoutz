@@ -98,8 +98,6 @@ namespace Autoclave.Pages
             {
                 throw new MissingFieldException("Maine.cs", "lottery");
             }
-
-            return new DateTime();
         }
 
         public LotteryNumber GetLatestNumbers(Lottery lottery)
@@ -244,8 +242,9 @@ namespace Autoclave.Pages
                         lottery = lottery,
                         numbers = new string[]
                         {
-                            "Not Yet Drawn."
-                        }
+                            
+                        },
+                        ADI = AfterDecodeInformation.NotDrawnOrUnavailable
                     };
                 }
             }
@@ -301,8 +300,9 @@ namespace Autoclave.Pages
                         lottery = lottery,
                         numbers = new string[]
                         {
-                            "Not Yet Drawn."
-                        }
+                           
+                        },
+                        ADI = AfterDecodeInformation.NotDrawnOrUnavailable
                     };
                 }
             }

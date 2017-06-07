@@ -101,6 +101,9 @@ namespace Autoclave.Pages
                         splits[2],
                         splits[3],
                         splits[4],
+                    },
+                    specials = new string[]
+                    {
                         nodes[11].InnerText
                     }
                 };

@@ -35,6 +35,13 @@ namespace Autoclave_Nogui
             if (Sequence.Count > 0)
             {
                 richTextBox1.Text = Sequence[index].ToString(LotteryNumberStringTypes.Numbers);
+                if (Sequence[index].specials != null)
+                {
+                    if (Sequence[index].specials.Length >= 0)
+                        richTextBox1.Text += "[" + Sequence[index].ToString(LotteryNumberStringTypes.Specials) + "]";
+                }
+                if (!String.IsNullOrWhiteSpace(Sequence[index].multiplier))
+                    richTextBox1.Text += "<" + Sequence[index].multiplier + ">";
                 GameText.Text = Sequence[index].lottery.lotteryNameUI;
                 TimeText.Text = Sequence[index].subdate;
                 StateText.Text = Sequence[index].lottery.state.stateNameUI;

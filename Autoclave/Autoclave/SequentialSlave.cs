@@ -27,6 +27,10 @@ namespace Autoclave
         {
             main.SlaveRunning = true;
             richTextBox1.Text = Sequence[index].ToString(LotteryNumberStringTypes.Numbers);
+            if(Sequence[index].specials.Length >= 0)
+                richTextBox1.Text += "[" + Sequence[index].ToString(LotteryNumberStringTypes.Specials) + "]";
+            if(!String.IsNullOrWhiteSpace(Sequence[index].multiplier))
+                richTextBox1.Text += "<" + Sequence[index].multiplier + ">";
             GameText.Text = Sequence[index].lottery.lotteryNameUI;
             TimeText.Text = Sequence[index].subdate;
             StateText.Text = Sequence[index].lottery.state.stateNameUI;

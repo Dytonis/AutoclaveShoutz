@@ -165,7 +165,10 @@ namespace Autoclave.Pages
                             nodes[2].InnerText.Trim(),
                             nodes[3].InnerText.Trim(),
                             nodes[4].InnerText.Trim(),
-                            nodes[5].InnerText.Trim(),
+                        },
+                        specials = new string[]
+                        {
+                            nodes[5].InnerText.Trim()
                         }
                     };
                 }

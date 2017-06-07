@@ -88,6 +88,7 @@
       <DependentUpon>SequentialSlave.cs</DependentUpon>
     </Compile>
     <Compile Include="Structs.cs" />
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Screens\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
