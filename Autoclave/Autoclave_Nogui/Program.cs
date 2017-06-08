@@ -32,7 +32,7 @@ namespace Autoclave_Nogui
             MainTimer.Elapsed += MainTimer_Elapsed;
             MainTimer.Start();
             Status = ProgramStatus.Program_Idle;
-            Action = ProgramAction.Action_PopSlaveThenApply;
+            Action = ProgramAction.Action_PopSlave;
             InputLoop();
         }
 
@@ -55,7 +55,7 @@ namespace Autoclave_Nogui
                         {
                             Action = ProgramAction.Action_PopSlaveThenApply;
                         }
-                        else if (splits[1] == "auto")
+                        else if (splits[1] == "full")
                         {
                             Action = ProgramAction.Action_Full;
                         }
@@ -246,8 +246,14 @@ namespace Autoclave_Nogui
                 }
                 AddToConsole("");
 
+                List<LotteryNumber> validatedList = new List<LotteryNumber>();
+                foreach(LotteryNumber n in NumbersList)
+                {
+                    validatedList.Add(Autoclave.Validation.CheckValidation(n));
+                }
+
                 Slave = new SequentialSlave();
-                Slave.Sequence = NumbersList;
+                Slave.Sequence = validatedList;
                 SystemSounds.Exclamation.Play();
 
                 Slave.ShowDialog();
@@ -272,10 +278,16 @@ namespace Autoclave_Nogui
                     return;
                 }
 
+                List<LotteryNumber> validatedList = new List<LotteryNumber>();
+                foreach (LotteryNumber n in NumbersList)
+                {
+                    validatedList.Add(Autoclave.Validation.CheckValidation(n));
+                }
+
                 if (Action == ProgramAction.Action_PopSlaveThenApply)
                 {
                     Slave = new SequentialSlave();
-                    Slave.Sequence = NumbersList;
+                    Slave.Sequence = validatedList;
                     SystemSounds.Exclamation.Play();
 
                     Slave.ShowDialog();
@@ -286,7 +298,7 @@ namespace Autoclave_Nogui
                 Console.WriteLine();
                 AddToConsole("Creating JSON object...");
 
-                DataEntryAPI.EntryImporterWebRequest request = NumbersListToConcreteJson.ToJson(NumbersList);
+                DataEntryAPI.EntryImporterWebRequest request = NumbersListToConcreteJson.ToJson(validatedList);
 
                 AddToConsole("Complete.");
                 if (request.draw_data.Length <= 0)
@@ -439,7 +451,7 @@ namespace Autoclave_Nogui
                     IStateDecodable decode = num.lottery.state as IStateDecodable;
                     LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
 
-                    bool numsMatch = false;
+                    bool numsMatch = true;
                     for (int i = 0; i < num.numbers.Length; i++)
                     {
                         if (numold.numbers.Length != num.numbers.Length)
@@ -600,6 +612,7 @@ namespace Autoclave_Nogui
             DataEntryAPI.EntryImporterWebRequest request = new DataEntryAPI.EntryImporterWebRequest();
 
             List<DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData> dataList = new List<DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData>();
+            List<LotteryNumber> InvalidNumbers = new List<LotteryNumber>();
 
             if (DataEntryAPI.Auth.isProduction)
                 request.data_key = DataEntryAPI.Auth.AuthToken_Prod;
@@ -609,15 +622,25 @@ namespace Autoclave_Nogui
             foreach(LotteryNumber n in list)
             {
                 DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData data = new DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData();
+                LotteryNumber number = Autoclave.Validation.CheckValidation(n);
 
-                if (n.lottery.Submit == FullAutoAction.SubmitFull)
-
+                if (number.lottery.Submit == FullAutoAction.SubmitFull)
                 {
-                    data.draw_date = n.date.ToShortDateString();
-                    data.picks = n.numbers;
-                    data.multiplier = n.multiplier;
-                    data.lottery_id = n.lottery.lottery_id;
-                    data.specials = n.specials;
+                    if(number.ADI == AfterDecodeInformation.Invalid)
+                    {
+                        InvalidNumbers.Add(number);
+                    }
+
+                    if(number.ADI != AfterDecodeInformation.Valid)
+                    {
+                        continue;
+                    }
+
+                    data.draw_date = number.date.ToShortDateString();
+                    data.picks = number.numbers;
+                    data.multiplier = number.multiplier;
+                    data.lottery_id = number.lottery.lottery_id;
+                    data.specials = number.specials;
 
                     foreach (string p in data.picks)
                     {
@@ -625,6 +648,41 @@ namespace Autoclave_Nogui
                     }
 
                     dataList.Add(data);
+                }
+            }
+
+            if(InvalidNumbers.Count >= 0)
+            {
+                Console.WriteLine("Autoclave validation checks failed on the following lotteries:");
+                foreach(LotteryNumber n in InvalidNumbers)
+                {
+                    string nn = "";
+                    for(int i = 0; i < n.numbers.Length; i++)
+                    {
+                        nn += n.numbers[i];
+
+                        if (i < n.numbers.Length - 1)
+                            nn += ", ";
+                    }
+                    string sn = "";
+                    if (n.specials != null)
+                    {
+                        sn += " [";
+                        for (int i = 0; i < n.specials.Length; i++)
+                        {
+                            sn += n.specials[i];
+
+                            if (i < n.specials.Length - 1)
+                                sn += ", ";
+                        }
+                        sn += "]";
+                    }
+                    string mn = "";
+                    if (!String.IsNullOrWhiteSpace(n.multiplier))
+                    {
+                        mn = " <" + n.multiplier + ">";
+                    }
+                    Console.WriteLine("    [" + n.lottery.lotteryName + "] -> {" + nn + sn + mn + "}");
                 }
             }
 

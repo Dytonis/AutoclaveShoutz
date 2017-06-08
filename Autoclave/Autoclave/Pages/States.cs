@@ -267,7 +267,8 @@ namespace Autoclave.Pages
                        state = new Pages.California(),
                        NumbersCount = 3,
                        UnitLength = 1,
-                       lottery_id = 57
+                       lottery_id = 57,
+                       Action = LotteryDecodeAction.Skip
                     },
                     new Lottery
                     {
@@ -277,7 +278,8 @@ namespace Autoclave.Pages
                        state = new Pages.California(),
                        NumbersCount = 3,
                        UnitLength = 1,
-                       lottery_id = 58
+                       lottery_id = 58,
+                       Action = LotteryDecodeAction.Skip
                     },
                     new Lottery
                     {
@@ -506,7 +508,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 3,
                        UnitLength = 1,
-                        lottery_id = 70
+                        lottery_id = 70,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -516,7 +519,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 3,
                        UnitLength = 1,
-                        lottery_id = 71
+                        lottery_id = 71,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -526,7 +530,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 4,
                        UnitLength = 1,
-                        lottery_id = 72
+                        lottery_id = 72,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -536,7 +541,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 4,
                        UnitLength = 1,
-                        lottery_id = 73
+                        lottery_id = 73,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -546,7 +552,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 5,
                        UnitLength = 1,
-                        lottery_id = 74
+                        lottery_id = 74,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -556,7 +563,8 @@ namespace Autoclave.Pages
                         state = new Pages.DC(),
                         NumbersCount = 5,
                        UnitLength = 1,
-                        lottery_id = 75
+                        lottery_id = 75,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },

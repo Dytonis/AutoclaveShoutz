@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SeqText = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.PaceText = new System.Windows.Forms.Label();
+            this.ValidationText = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TimeText = new System.Windows.Forms.Label();
             this.DateText = new System.Windows.Forms.Label();
@@ -103,22 +103,22 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(610, 20);
+            this.label5.Location = new System.Drawing.Point(446, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 20);
+            this.label5.Size = new System.Drawing.Size(83, 20);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Pace:";
+            this.label5.Text = "Validation:";
             // 
-            // PaceText
+            // ValidationText
             // 
-            this.PaceText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PaceText.AutoSize = true;
-            this.PaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PaceText.Location = new System.Drawing.Point(670, 20);
-            this.PaceText.Name = "PaceText";
-            this.PaceText.Size = new System.Drawing.Size(53, 20);
-            this.PaceText.TabIndex = 5;
-            this.PaceText.Text = "1h 2m";
+            this.ValidationText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ValidationText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ValidationText.Location = new System.Drawing.Point(670, 20);
+            this.ValidationText.Name = "ValidationText";
+            this.ValidationText.Size = new System.Drawing.Size(53, 20);
+            this.ValidationText.TabIndex = 5;
+            this.ValidationText.Text = "1h 2m";
+            this.ValidationText.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel1
             // 
@@ -219,7 +219,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.StateText);
-            this.panel2.Controls.Add(this.PaceText);
+            this.panel2.Controls.Add(this.ValidationText);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.SeqText);
@@ -310,7 +310,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label SeqText;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label PaceText;
+        private System.Windows.Forms.Label ValidationText;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label GameText;

@@ -36,6 +36,7 @@ namespace Autoclave
             StateText.Text = Sequence[index].lottery.state.stateNameUI;
             DateText.Text = Sequence[index].date.ToShortDateString();
             SeqText.Text = (indexThrough + 1) + " / " + Sequence.Count;
+            ValidationText.Text = Sequence[index].ADI.ToString();
 
             if(checkBox1.Checked)
             {

@@ -6,50 +6,52 @@ using System.Threading.Tasks;
 
 namespace Autoclave
 {
-    class Validation
+    public static class Validation
     {
-        public void CheckValidation(List<LotteryNumber> numbers)
+        public static LotteryNumber CheckValidation(LotteryNumber number)
         {
             bool valid = true;
-            for(int i = 0; i < numbers.Count; i++)
+
+            if (number.lottery.Action == LotteryDecodeAction.Skip)
             {
-                LotteryNumber n = numbers[i];
-
-                if(n.lottery.Action == LotteryDecodeAction.Skip)
-                {
-                    n.ADI = AfterDecodeInformation.NotDrawnOrUnavailable;
-                    continue;
-                }
-
-                if (n.numbers.Length != n.lottery.NumbersCount)
-                {
-                    n.ADI = AfterDecodeInformation.Invalid;
-                    valid = false;
-                }
-                if (n.numbers[0].Length != n.lottery.UnitLength)
-                {
-                    n.ADI = AfterDecodeInformation.Invalid;
-                    valid = false;
-                }
-                if (n.specials.Length != n.lottery.SpecialsCount)
-                {
-                    n.ADI = AfterDecodeInformation.Invalid;
-                    valid = false;
-                }
-                if (n.specials[0].Length != n.lottery.SpecialUnitLength)
-                {
-                    n.ADI = AfterDecodeInformation.Invalid;
-                    valid = false;
-                }
-                if ((String.IsNullOrWhiteSpace(n.multiplier) && n.lottery.hasMultiplier))
-                {
-                    n.ADI = AfterDecodeInformation.Invalid;
-                    valid = false;
-                }
-
-                if (valid)
-                    n.ADI = AfterDecodeInformation.Valid;
+                number.ADI = AfterDecodeInformation.NotDrawnOrUnavailable;
+                return number;
             }
+
+            if (number.numbers.Length != number.lottery.NumbersCount)
+            {
+                number.ADI = AfterDecodeInformation.Invalid;
+                valid = false;
+            }
+            if (number.numbers[0].Length > number.lottery.UnitLength)
+            {
+                number.ADI = AfterDecodeInformation.Invalid;
+                valid = false;
+            }
+            if (number.specials != null)
+            {
+                if (number.specials.Length != number.lottery.SpecialsCount)
+                {
+                    number.ADI = AfterDecodeInformation.Invalid;
+                    valid = false;
+                }
+                if (number.specials[0].Length > number.lottery.SpecialUnitLength)
+                {
+                    number.ADI = AfterDecodeInformation.Invalid;
+                    valid = false;
+                }
+            }
+            if ((String.IsNullOrWhiteSpace(number.multiplier) && number.lottery.hasMultiplier))
+            {
+                number.ADI = AfterDecodeInformation.Invalid;
+                valid = false;
+            }
+
+            if (valid)
+                number.ADI = AfterDecodeInformation.Valid;
+
+            return number;
         }
     }
 }
+
