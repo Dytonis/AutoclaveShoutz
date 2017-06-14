@@ -62,7 +62,7 @@ namespace Autoclave
                 }
 
 
-                a.Trim();
+                a = a.Trim();
 
                 if(ADI == AfterDecodeInformation.NeedsValidation)
                 {
@@ -106,7 +106,7 @@ namespace Autoclave
                     a += s + " ";
                 }
 
-                a.Trim();
+                a = a.Trim();
 
                 return a;
             }
@@ -119,9 +119,29 @@ namespace Autoclave
                     a += s + " ";
                 }
 
-                a.Trim();
+                a = a.Trim();
 
                 return a;
+            }
+            else if (index == LotteryNumberStringTypes.Specials)
+            {
+                string s = "";
+                foreach(string n in specials)
+                {
+                    s += n + " ";
+                }
+
+                s = s.Trim();
+
+                return s;
+            }
+            else if (index == LotteryNumberStringTypes.Multipliers)
+            {
+                string m = "";
+
+                m += multiplier;
+
+                return m;
             }
 
             return "";

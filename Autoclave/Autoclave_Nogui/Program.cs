@@ -78,8 +78,10 @@ namespace Autoclave_Nogui
                             continue;
                         }
                     }
-                    Status = ProgramStatus.Program_Waiting;
+                    Logging.StartEmailLogLoop(5 * 60 * 1000);
+                    Status = ProgramStatus.Program_Idle;
                     AddToConsole("AUTOCLAVE Started");
+                    Cycle();
                 }
                 else if (command == "slave")
                 {
@@ -189,15 +191,30 @@ namespace Autoclave_Nogui
                         catch (NumbersUnavailableExcpetion)
                         {
                             AddToConsole("    ...Currently unavailabele/pending.");
+                            Logging.AddToLog(new string[]
+                            {
+                                "Cycles Render: Currently unavailable/pending.",
+                                "    [" + lottery.lotteryName + "]"
+                            });
                             continue;
                         }
                         catch (MissingFieldException)
                         {
                             AddToConsole("    ...Server returned an invalid response.");
+                            Logging.AddToLog(new string[]
+{
+                                "Cycles Render: Server returned an invalid response.",
+                                "    [" + lottery.lotteryName + "]"
+});
                         }
                         catch (IOException)
                         {
                             AddToConsole("IO exception while running " + lottery.lotteryName);
+                            Logging.AddToLog(new string[]
+{
+                                "Cycles Render: IO exception.",
+                                "    [" + lottery.lotteryName + "]"
+});
                         }
                         catch (System.Net.WebException ex)
                         {
@@ -217,6 +234,16 @@ namespace Autoclave_Nogui
                             if (ex.InnerException != null)
                                 AddToConsole("    ..." + ex.InnerException.Message);
                             AddToConsole("Stack trace: \n" + ex.StackTrace);
+
+                            Logging.AddToLog(new string[]
+{
+                                "Cycles Render: Unknown exepction.",
+                                "    [" + lottery.lotteryName + "]",
+                                "    Message: " + ex.Message,
+                                "    Inner: " + ex.InnerException,
+                                "    Stack trace: ",
+                                "    " + ex.StackTrace
+});
                             continue;
                         }
 
@@ -224,6 +251,7 @@ namespace Autoclave_Nogui
                     iS++;
                 }
 
+                Logging.CloseEntry();
                 CycleEndedAsync();
             }));
 
@@ -272,6 +300,19 @@ namespace Autoclave_Nogui
                 }
                 AddToConsole("");
 
+                if (NumbersList.Count > 0)
+                {
+                    List<string> updates = new List<string>();
+                    updates.Add("Autoclave detected " + NumbersList.Count + " updates.");
+
+                    foreach (LotteryNumber n in NumbersList)
+                    {
+                        updates.Add("    [" + n.lottery.lotteryName + "]");
+                    }
+
+                    Logging.AddToLog(updates.ToArray());
+                }
+
                 if(NumbersList.Count <= 0)
                 {
                     Status = ProgramStatus.Program_Waiting;
@@ -299,10 +340,13 @@ namespace Autoclave_Nogui
                 AddToConsole("Creating JSON object...");
 
                 DataEntryAPI.EntryImporterWebRequest request = NumbersListToConcreteJson.ToJson(validatedList);
-
                 AddToConsole("Complete.");
                 if (request.draw_data.Length <= 0)
                 {
+                    Logging.AddToLog(new string[]
+                    {
+                        "All updates detected were FullAutoAction.DoNothing. No updates will be deployed."
+                    });
                     AddToConsole(" --- All updates are FullAutoAction.DoNothing. No updates will be deployed.");
                     AddToConsole("");
                     Status = ProgramStatus.Program_Waiting;
@@ -311,9 +355,30 @@ namespace Autoclave_Nogui
                 else
                 {
                     AddToConsole("Submitting data to LHAPI...");
-                    DataEntryAPI.EntryImporterWebResponse response = await DataEntryAPI.Entry.EntryImporter(request);
-                    AddToConsole("Complete.");
-                    Status = ProgramStatus.Program_Waiting;
+                    try
+                    {
+
+
+                        DataEntryAPI.EntryImporterWebResponse response = await DataEntryAPI.Entry.EntryImporter(request);
+                        Logging.AddToLog(new string[]
+                        {
+                        "Submitting data to LHAPI...",
+                        "    " + response.response.StatusCode + " [" + (int)response.response.StatusCode + "]",
+                        "    Submitted json payload: ",
+                        "    " + request.rawJsonPayload
+                        });
+                        AddToConsole("Complete.");
+                        Status = ProgramStatus.Program_Waiting;
+                    }
+                    catch
+                    {
+                        Logging.AddToLog(new string[]
+                        {
+                            "There was an error when submitting data to LHAPI. The payload may not have been submitted."
+                        });
+                        AddToConsole("Complete.");
+                        Status = ProgramStatus.Program_Waiting;
+                    }
                 }
             }
             else
@@ -321,6 +386,7 @@ namespace Autoclave_Nogui
                 Status = ProgramStatus.Program_Waiting;
             }
             NumbersList.Clear();
+            Logging.CloseEntry();
         }
 
         private static void UpdateStatusText(string v)
@@ -447,10 +513,37 @@ namespace Autoclave_Nogui
                         File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
                         AddToConsole("    ...Record re-made. This will cause a slave update.");
 
-                    }
-                    IStateDecodable decode = num.lottery.state as IStateDecodable;
-                    LotteryNumber numold = decode.GetLatestNumbers(num.lottery);
+                        Logging.AddToLog(new string[]
+                            {
+                                "There was a problem opening the record. The record will be remade. This will cause an update.",
+                                "    [" + num.lottery.lotteryName + "]"
+                            });
 
+                    }
+
+                    LotteryNumber numold;
+
+                    try
+                    {
+                        IStateDecodable decode = num.lottery.state as IStateDecodable;
+                        numold = decode.GetLatestNumbers(num.lottery);
+                    }
+                    catch
+                    {
+                        AddToConsole("    ...There was an error reading the record. The record will be remade. This will cause an update.");
+                        Logging.AddToLog(new string[]
+                        {
+                            "There was an error reading the record. The record will be remade. This will cause an update.",
+                            "    [" + num.lottery.lotteryName + "]"
+                        });
+
+                        File.Delete(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html");
+                        Directory.CreateDirectory(path + "\\Autoclave\\Save\\");
+                        NumbersList.Add(num);
+                        File.WriteAllText(path + "\\Autoclave\\Save\\" + num.lottery.lotteryName + ".html", writeHTML);
+
+                        return;
+                    }
                     bool numsMatch = true;
                     for (int i = 0; i < num.numbers.Length; i++)
                     {
@@ -493,6 +586,14 @@ namespace Autoclave_Nogui
                 if (ex.InnerException != null)
                     AddToConsole("    ..." + ex.InnerException.Message);
                 AddToConsole("Stack trace: \n" + ex.StackTrace);
+
+                Logging.AddToLog(new string[]
+                {
+                    "There was an exception while handling updates. Could the website have updated?",
+                    "    [" + num.lottery.lotteryName + "]",
+                    "    Stack trace: ",
+                    "    " + ex.StackTrace
+                });
             }
         }
         public static void HandleDateTrigger(DateTime date, Lottery lot)
@@ -622,25 +723,24 @@ namespace Autoclave_Nogui
             foreach(LotteryNumber n in list)
             {
                 DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData data = new DataEntryAPI.EntryImporterWebRequest.EntryImporterDrawData();
-                LotteryNumber number = Autoclave.Validation.CheckValidation(n);
 
-                if (number.lottery.Submit == FullAutoAction.SubmitFull)
+                if (n.lottery.Submit == FullAutoAction.SubmitFull)
                 {
-                    if(number.ADI == AfterDecodeInformation.Invalid)
+                    if(n.ADI == AfterDecodeInformation.Invalid)
                     {
-                        InvalidNumbers.Add(number);
+                        InvalidNumbers.Add(n);
                     }
 
-                    if(number.ADI != AfterDecodeInformation.Valid)
+                    if(n.ADI != AfterDecodeInformation.Valid)
                     {
                         continue;
                     }
 
-                    data.draw_date = number.date.ToShortDateString();
-                    data.picks = number.numbers;
-                    data.multiplier = number.multiplier;
-                    data.lottery_id = number.lottery.lottery_id;
-                    data.specials = number.specials;
+                    data.draw_date = n.date.ToShortDateString();
+                    data.picks = n.numbers;
+                    data.multiplier = n.multiplier;
+                    data.lottery_id = n.lottery.lottery_id;
+                    data.specials = n.specials;
 
                     foreach (string p in data.picks)
                     {
@@ -651,7 +751,7 @@ namespace Autoclave_Nogui
                 }
             }
 
-            if(InvalidNumbers.Count >= 0)
+            if(InvalidNumbers.Count > 0)
             {
                 Console.WriteLine("Autoclave validation checks failed on the following lotteries:");
                 foreach(LotteryNumber n in InvalidNumbers)
@@ -683,6 +783,15 @@ namespace Autoclave_Nogui
                         mn = " <" + n.multiplier + ">";
                     }
                     Console.WriteLine("    [" + n.lottery.lotteryName + "] -> {" + nn + sn + mn + "}");
+                    Logging.AddToLog(new string[]
+                    {
+                        "Validation failed.",
+                        "    [" + n.lottery.lotteryName + "] -> {" + nn + sn + mn + "}",
+                        "        UL: " + n.lottery.UnitLength + ", NC: " + n.lottery.NumbersCount,
+                        "        SUL: " + n.lottery.SpecialUnitLength + ", SNC: " + n.lottery.SpecialsCount,
+                        "        hasMultiplier: " + n.lottery.hasMultiplier.ToString(),
+                        "        This is a FullAutoAction." + n.lottery.Submit.ToString() + " lottery."
+                    });
                 }
             }
 

@@ -41,7 +41,7 @@ namespace Autoclave.Pages
             if (lottery.lotteryName.Equals("maine_megabucks"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'homewinners')]//h2").ToArray();
-                string dateText = nodes[1].InnerText;
+                string dateText = nodes[1].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -49,7 +49,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_luckyforlife"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'homewinners')]//h2").ToArray();
-                string dateText = nodes[4].InnerText;
+                string dateText = nodes[4].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -57,7 +57,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_hotlottosizzler"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'homewinners')]//h2").ToArray();
-                string dateText = nodes[3].InnerText;
+                string dateText = nodes[3].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -65,7 +65,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_gimme5"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'homewinners')]//h2").ToArray();
-                string dateText = nodes[5].InnerText;
+                string dateText = nodes[5].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -73,7 +73,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_pick3day") || lottery.lotteryName.Equals("maine_pick3eve"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'pickhomewinners')]//h2").ToArray();
-                string dateText = nodes[0].InnerText;
+                string dateText = nodes[0].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -81,7 +81,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_pick4day") || lottery.lotteryName.Equals("maine_pick4eve"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'pickhomewinners')]//h2").ToArray();
-                string dateText = nodes[1].InnerText;
+                string dateText = nodes[1].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -89,7 +89,7 @@ namespace Autoclave.Pages
             else if (lottery.lotteryName.Equals("maine_wptallin") || lottery.lotteryName.Equals("maine_pick4eve"))
             {
                 HtmlNode[] nodes = Maine.DocumentNode.SelectNodes("//div[contains(@class,'homewinners')]//h2").ToArray();
-                string dateText = nodes[8].InnerText;
+                string dateText = nodes[8].InnerText.Trim();
 
                 DateTime dt = DateTime.ParseExact(dateText, "dddd MM/dd/yyyy", CultureInfo.InvariantCulture);
                 return dt;
@@ -122,12 +122,12 @@ namespace Autoclave.Pages
                     lottery = lottery,
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
-                        nodes2[3].InnerText,
-                        nodes2[4].InnerText,
-                        nodes2[5].InnerText
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
+                        nodes2[3].InnerText.Trim(),
+                        nodes2[4].InnerText.Trim(),
+                        nodes2[5].InnerText.Trim()
                     }
                 };
             }
@@ -143,12 +143,12 @@ namespace Autoclave.Pages
                     lottery = lottery,
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
-                        nodes2[3].InnerText,
-                        nodes2[4].InnerText,
-                        nodes2[5].InnerText
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
+                        nodes2[3].InnerText.Trim(),
+                        nodes2[4].InnerText.Trim(),
+                        nodes2[5].InnerText.Trim()
                     }
                 };
             }
@@ -164,11 +164,11 @@ namespace Autoclave.Pages
                     lottery = lottery,
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
-                        nodes2[3].InnerText,
-                        nodes2[4].InnerText,
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
+                        nodes2[3].InnerText.Trim(),
+                        nodes2[4].InnerText.Trim(),
                     }
                 };
             }
@@ -184,12 +184,12 @@ namespace Autoclave.Pages
                     lottery = lottery,
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
-                        nodes2[3].InnerText,
-                        nodes2[4].InnerText,
-                        nodes2[5].InnerText,
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
+                        nodes2[3].InnerText.Trim(),
+                        nodes2[4].InnerText.Trim(),
+                        nodes2[5].InnerText.Trim(),
                     }
                 };
             }
@@ -206,9 +206,9 @@ namespace Autoclave.Pages
                     lottery = lottery,
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
                     }
                 };
             }
@@ -227,9 +227,9 @@ namespace Autoclave.Pages
                         lottery = lottery,
                         numbers = new string[]
                         {
-                        nodes2[3].InnerText,
-                        nodes2[4].InnerText,
-                        nodes2[5].InnerText
+                        nodes2[3].InnerText.Trim(),
+                        nodes2[4].InnerText.Trim(),
+                        nodes2[5].InnerText.Trim()
                         }
                     };
                 }
@@ -261,10 +261,10 @@ namespace Autoclave.Pages
                     subdate = "Day",
                     numbers = new string[]
                     {
-                        nodes2[0].InnerText,
-                        nodes2[1].InnerText,
-                        nodes2[2].InnerText,
-                        nodes2[3].InnerText,
+                        nodes2[0].InnerText.Trim(),
+                        nodes2[1].InnerText.Trim(),
+                        nodes2[2].InnerText.Trim(),
+                        nodes2[3].InnerText.Trim(),
                     }
                 };
             }
@@ -284,10 +284,10 @@ namespace Autoclave.Pages
                         lottery = lottery,
                         numbers = new string[]
                         {
-                        nodes2[4].InnerText,
-                        nodes2[5].InnerText,
-                        nodes2[6].InnerText,
-                        nodes2[7].InnerText,
+                        nodes2[4].InnerText.Trim(),
+                        nodes2[5].InnerText.Trim(),
+                        nodes2[6].InnerText.Trim(),
+                        nodes2[7].InnerText.Trim(),
                         }
                     };
                 }

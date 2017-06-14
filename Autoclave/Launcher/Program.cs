@@ -299,7 +299,8 @@ namespace Launcher
                     System.Diagnostics.Process.Start(current + "/Autoclave/Autoclave.exe");
                 }
                 else
-                    Console.WriteLine("Autoclave not installed. Please run \'update\'.");
+                    Console.WriteLine(
+                        not installed. Please run \'update\'.");
 
                 LaunchReady = false;
             }

@@ -23,7 +23,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 6,
                        UnitLength = 2,
-                       lottery_id = 188
+                       lottery_id = 188,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -32,7 +33,8 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Maine(),
-                       lottery_id = 0
+                       lottery_id = 0,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -40,7 +42,8 @@ namespace Autoclave.Pages
                        lotteryName = "maine_hotlottosizzler",
                        lotteryNameUI = "Hot Lotto Sizzler",
                        state = new Pages.Maine(),
-                       lottery_id = 0
+                       lottery_id = 0,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -50,7 +53,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 3,
                        UnitLength = 1,
-                       lottery_id = 191
+                       lottery_id = 191,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -60,7 +64,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 3,
                        UnitLength = 1,
-                       lottery_id = 192
+                       lottery_id = 192,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -70,7 +75,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 4,
                        UnitLength = 1,
-                       lottery_id = 193
+                       lottery_id = 193,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -80,7 +86,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 4,
                        UnitLength = 1,
-                       lottery_id = 194
+                       lottery_id = 194,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -90,7 +97,8 @@ namespace Autoclave.Pages
                        state = new Pages.Maine(),
                        NumbersCount = 5,
                        UnitLength = 2,
-                       lottery_id = 190
+                       lottery_id = 190,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -115,7 +123,8 @@ namespace Autoclave.Pages
                         state = new Pages.Arizona(),
                         NumbersCount = 6,
                         UnitLength = 2,
-                        lottery_id = 43
+                        lottery_id = 43,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -125,7 +134,8 @@ namespace Autoclave.Pages
                         state = new Pages.Arizona(),
                         NumbersCount = 5,
                         UnitLength = 2,
-                        lottery_id = 44
+                        lottery_id = 44,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -135,7 +145,8 @@ namespace Autoclave.Pages
                         state = new Pages.Arizona(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 47
+                        lottery_id = 47,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -154,7 +165,8 @@ namespace Autoclave.Pages
                         state = new Pages.Arizona(),
                         NumbersCount = 10,
                         UnitLength = 2,
-                        lottery_id = 264
+                        lottery_id = 264,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -164,7 +176,8 @@ namespace Autoclave.Pages
                         state = new Pages.Arizona(),
                         NumbersCount = 10,
                         UnitLength = 2,
-                        lottery_id = 265
+                        lottery_id = 265,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -180,7 +193,8 @@ namespace Autoclave.Pages
                        state = new Pages.Arkansas(),
                        NumbersCount = 5,
                        UnitLength = 2,
-                       lottery_id = 52
+                       lottery_id = 52,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -189,7 +203,7 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky For Life",
                        state = new Pages.Arkansas(),
-                       lottery_id = 0
+                       lottery_id = 0,
                    },
                    new Lottery
                    {
@@ -199,7 +213,8 @@ namespace Autoclave.Pages
                        state = new Pages.Arkansas(),
                        NumbersCount = 3,
                        UnitLength = 2,
-                       lottery_id = 48
+                       lottery_id = 48,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -209,7 +224,8 @@ namespace Autoclave.Pages
                        state = new Pages.Arkansas(),
                        NumbersCount = 3,
                        UnitLength = 2,
-                       lottery_id = 49
+                       lottery_id = 49,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -219,7 +235,8 @@ namespace Autoclave.Pages
                        state = new Pages.Arkansas(),
                        NumbersCount = 4,
                        UnitLength = 2,
-                       lottery_id = 50
+                       lottery_id = 50,
+                       Submit = FullAutoAction.SubmitFull
                    },
                    new Lottery
                    {
@@ -229,7 +246,8 @@ namespace Autoclave.Pages
                        state = new Pages.Arkansas(),
                        NumbersCount = 4,
                        UnitLength = 2,
-                       lottery_id = 51
+                       lottery_id = 51,
+                       Submit = FullAutoAction.SubmitFull
                    },
                 }
             },
@@ -247,7 +265,8 @@ namespace Autoclave.Pages
                        UnitLength = 2,
                        SpecialsCount = 1,
                        SpecialUnitLength = 2,
-                       lottery_id = 54
+                       lottery_id = 54,
+                       Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -257,7 +276,8 @@ namespace Autoclave.Pages
                        state = new Pages.California(),
                        NumbersCount = 5,
                        UnitLength = 2,
-                       lottery_id = 55
+                       lottery_id = 55,
+                       Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -289,7 +309,8 @@ namespace Autoclave.Pages
                        state = new Pages.California(),
                        NumbersCount = 4,
                        UnitLength = 1,
-                       lottery_id = 56
+                       lottery_id = 56,
+                       Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -304,7 +325,7 @@ namespace Autoclave.Pages
                        Action = LotteryDecodeAction.Skip,
                        lotteryNameUI = "Lucky for Life",
                        state = new Pages.Colorado(),
-                       lottery_id = 0
+                       lottery_id = 0,
                    },
                     new Lottery
                     {
@@ -314,7 +335,8 @@ namespace Autoclave.Pages
                        state = new Pages.Colorado(),
                        NumbersCount = 6,
                        UnitLength = 2,
-                       lottery_id = 2
+                       lottery_id = 2,
+                       Submit = FullAutoAction.SubmitFull
                    },
                     new Lottery
                     {
@@ -324,7 +346,8 @@ namespace Autoclave.Pages
                        state = new Pages.Colorado(),
                        NumbersCount = 5,
                        UnitLength = 2,
-                       lottery_id = 3
+                       lottery_id = 3,
+                       Submit = FullAutoAction.SubmitFull
                    },
                     new Lottery
                     {
@@ -362,7 +385,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 8,
                        UnitLength = 2,
-                        lottery_id = 306
+                        lottery_id = 306,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -372,7 +396,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 8,
                        UnitLength = 2,
-                        lottery_id = 307
+                        lottery_id = 307,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -400,7 +425,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 3,
                        UnitLength = 1,
-                        lottery_id = 124
+                        lottery_id = 124,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -410,7 +436,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 3,
                        UnitLength = 1,
-                        lottery_id = 125
+                        lottery_id = 125,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -420,7 +447,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 4,
                        UnitLength = 1,
-                        lottery_id = 126
+                        lottery_id = 126,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -430,7 +458,8 @@ namespace Autoclave.Pages
                         state = new Pages.Connecticut(),
                         NumbersCount = 4,
                        UnitLength = 1,
-                        lottery_id = 127
+                        lottery_id = 127,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -574,116 +603,127 @@ namespace Autoclave.Pages
                 {
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_lotto",
                         lotteryNameUI = "Lotto",
                         state = new Pages.Florida(),
                         NumbersCount = 6,
                        UnitLength = 2,
                        hasMultiplier = true,
-                        lottery_id = 5
+                        lottery_id = 5,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_luckymoney",
                         lotteryNameUI = "Lucky Money",
                         state = new Pages.Florida(),
-                        NumbersCount = 5,
+                        NumbersCount = 4,
                         UnitLength = 2, 
                        SpecialsCount = 1,
                        SpecialUnitLength = 2,
-                        lottery_id = 271
+                        lottery_id = 271,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_fantasy5",
                         lotteryNameUI = "Fantasy 5",
                         state = new Pages.Florida(),
                         NumbersCount = 5,
                         UnitLength = 2,
-                        lottery_id = 7
+                        lottery_id = 7,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick2day",
                         lotteryNameUI = "Pick 2",
                         state = new Pages.Florida(),
                         NumbersCount = 2,
                         UnitLength = 1,
-                        lottery_id = 317
+                        lottery_id = 317,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick2eve",
                         lotteryNameUI = "Pick 2",
                         state = new Pages.Florida(),
                         NumbersCount = 2,
                         UnitLength = 1,
-                        lottery_id = 319
+                        lottery_id = 319,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick3day",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Florida(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 10
+                        lottery_id = 10,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick3eve",
                         lotteryNameUI = "Pick 3",
                         state = new Pages.Florida(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 11
+                        lottery_id = 11,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick4day",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Florida(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 8
+                        lottery_id = 8,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick4eve",
                         lotteryNameUI = "Pick 4",
                         state = new Pages.Florida(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 9
+                        lottery_id = 9,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick5day",
                         lotteryNameUI = "Pick 5",
                         state = new Pages.Florida(),
                         NumbersCount = 5,
                         UnitLength = 1,
-                        lottery_id = 318
+                        lottery_id = 318,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
-                        url = "http://www.flalottery.com/",
+                        url = "http://www.flalottery.com/winningNumbers",
                         lotteryName = "florida_pick5eve",
                         lotteryNameUI = "Pick 5",
                         state = new Pages.Florida(),
                         NumbersCount = 5,
                         UnitLength = 1,
-                        lottery_id = 320
+                        lottery_id = 320,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -734,7 +774,8 @@ namespace Autoclave.Pages
                         state = new Pages.Idaho(),
                         NumbersCount = 5,
                         UnitLength = 2,
-                        lottery_id = 143
+                        lottery_id = 143,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -752,7 +793,8 @@ namespace Autoclave.Pages
                         UnitLength = 2,
                         SpecialsCount = 1,
                         SpecialUnitLength = 2,
-                        lottery_id = 146
+                        lottery_id = 146,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -762,7 +804,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 5,
                         UnitLength = 2,
-                        lottery_id = 147
+                        lottery_id = 147,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -772,7 +815,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 5,
                         UnitLength = 2,
-                        lottery_id = 154
+                        lottery_id = 154,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -782,7 +826,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 150
+                        lottery_id = 150,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -792,7 +837,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 151
+                        lottery_id = 151,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -802,7 +848,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 152
+                        lottery_id = 152,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -812,7 +859,8 @@ namespace Autoclave.Pages
                         state = new Pages.Illinois(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 153
+                        lottery_id = 153,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -828,7 +876,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 12,
                         UnitLength = 2,
-                        lottery_id = 257
+                        lottery_id = 257,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -838,7 +887,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 12,
                         UnitLength = 2,
-                        lottery_id = 258
+                        lottery_id = 258,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -848,7 +898,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 16
+                        lottery_id = 16,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -858,7 +909,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 3,
                         UnitLength = 1,
-                        lottery_id = 17
+                        lottery_id = 17,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -868,7 +920,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 14
+                        lottery_id = 14,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -878,7 +931,8 @@ namespace Autoclave.Pages
                         state = new Pages.Iowa(),
                         NumbersCount = 4,
                         UnitLength = 1,
-                        lottery_id = 15
+                        lottery_id = 15,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             },
@@ -896,7 +950,8 @@ namespace Autoclave.Pages
                         UnitLength = 2,
                         SpecialUnitLength = 2,
                         SpecialsCount = 1,
-                        lottery_id = 29
+                        lottery_id = 29,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -906,7 +961,8 @@ namespace Autoclave.Pages
                         state = new Pages.Kansas(),
                         NumbersCount = 4,
                         UnitLength = 2,
-                        lottery_id = 30
+                        lottery_id = 30,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -942,7 +998,8 @@ namespace Autoclave.Pages
                         state = new Pages.Louisiana(),
                         UnitLength = 2,
                         NumbersCount = 6,
-                        lottery_id = 87
+                        lottery_id = 87,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -952,7 +1009,8 @@ namespace Autoclave.Pages
                         state = new Pages.Louisiana(),
                         UnitLength = 2,
                         NumbersCount = 5,
-                        lottery_id = 86
+                        lottery_id = 86,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -962,7 +1020,8 @@ namespace Autoclave.Pages
                         state = new Pages.Louisiana(),
                         UnitLength = 1,
                         NumbersCount = 4,
-                        lottery_id = 85
+                        lottery_id = 85,
+                        Submit = FullAutoAction.SubmitFull
                     },
                     new Lottery
                     {
@@ -972,7 +1031,180 @@ namespace Autoclave.Pages
                         state = new Pages.Louisiana(),
                         UnitLength = 1,
                         NumbersCount = 3,
-                        lottery_id = 84
+                        lottery_id = 84,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                }
+            },
+            new NorthCarolina
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.nc-educationlottery.org/games.aspx",
+                        lotteryName = "northcarolina_pick3day",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.NorthCarolina(),
+                        UnitLength = 1,
+                        NumbersCount = 3,
+                        lottery_id = 97,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.nc-educationlottery.org/games.aspx",
+                        lotteryName = "northcarolina_pick3eve",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.NorthCarolina(),
+                        UnitLength = 1,
+                        NumbersCount = 3,
+                        lottery_id = 98,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.nc-educationlottery.org/games.aspx",
+                        lotteryName = "northcarolina_pick4day",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.NorthCarolina(),
+                        UnitLength = 1,
+                        NumbersCount = 4,
+                        lottery_id = 99,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.nc-educationlottery.org/games.aspx",
+                        lotteryName = "northcarolina_pick4eve",
+                        lotteryNameUI = "Pick 4",
+                        state = new Pages.NorthCarolina(),
+                        UnitLength = 1,
+                        NumbersCount = 4,
+                        lottery_id = 100,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.nc-educationlottery.org/games.aspx",
+                        lotteryName = "northcarolina_cash5",
+                        lotteryNameUI = "Cash 5",
+                        state = new Pages.NorthCarolina(),
+                        UnitLength = 2,
+                        NumbersCount = 5,
+                        lottery_id = 101,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                }
+            },
+            new Nebraska
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "https://nelottery.com/homeapp/landing",
+                        lotteryName = "nebraska_pick5",
+                        lotteryNameUI = "Pick 5",
+                        state = new Pages.Nebraska(),
+                        UnitLength = 2,
+                        NumbersCount = 5,
+                        lottery_id = 24,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "https://nelottery.com/homeapp/landing",
+                        lotteryName = "nebraska_pick3",
+                        lotteryNameUI = "Pick 3",
+                        state = new Pages.Nebraska(),
+                        UnitLength = 2,
+                        NumbersCount = 3,
+                        lottery_id = 25,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "https://nelottery.com/homeapp/landing",
+                        lotteryName = "nebraska_myday",
+                        lotteryNameUI = "My Day",
+                        state = new Pages.Nebraska(),
+                        UnitLength = 2,
+                        NumbersCount = 3,
+                        lottery_id = 26,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "https://nelottery.com/homeapp/landing",
+                        lotteryName = "nebraska_2by2",
+                        lotteryNameUI = "2 by 2",
+                        state = new Pages.Nebraska(),
+                        UnitLength = 2,
+                        NumbersCount = 4,
+                        lottery_id = 27,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                }
+            },
+            new Washington
+            {
+                lotteries = new List<Lottery>()
+                {
+                    new Lottery
+                    {
+                        url = "http://www.walottery.com/WinningNumbers/Default.aspx",
+                        lotteryName = "washington_lotto",
+                        lotteryNameUI = "Lotto",
+                        state = new Pages.Washington(),
+                        UnitLength = 2,
+                        NumbersCount = 6,
+                        lottery_id = 176,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.walottery.com/WinningNumbers/Default.aspx",
+                        lotteryName = "washington_hit5",
+                        lotteryNameUI = "Hit 5",
+                        state = new Pages.Washington(),
+                        UnitLength = 2,
+                        NumbersCount = 5,
+                        lottery_id = 177,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.walottery.com/WinningNumbers/Default.aspx",
+                        lotteryName = "washington_match4",
+                        lotteryNameUI = "Match 4",
+                        state = new Pages.Washington(),
+                        UnitLength = 2,
+                        NumbersCount = 4,
+                        lottery_id = 178,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.walottery.com/WinningNumbers/Default.aspx",
+                        lotteryName = "washington_dailygame",
+                        lotteryNameUI = "Daily Game",
+                        state = new Pages.Washington(),
+                        UnitLength = 1,
+                        NumbersCount = 3,
+                        lottery_id = 179,
+                        Submit = FullAutoAction.SubmitFull
+                    },
+                    new Lottery
+                    {
+                        url = "http://www.walottery.com/WinningNumbers/Default.aspx",
+                        lotteryName = "washington_keno",
+                        lotteryNameUI = "Keno",
+                        state = new Pages.Washington(),
+                        UnitLength = 2,
+                        NumbersCount = 20,
+                        lottery_id = 180,
+                        Submit = FullAutoAction.SubmitFull
                     },
                 }
             }

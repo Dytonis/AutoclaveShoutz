@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autoclave.cs" />
+    <Compile Include="Logging.cs" />
     <Compile Include="Pages\Arizona.cs" />
     <Compile Include="Pages\Arkansas.cs" />
     <Compile Include="Pages\California.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Pages\Louisiana.cs" />
     <Compile Include="Pages\Kansas.cs" />
     <Compile Include="Pages\Iowa.cs" />
+    <Compile Include="Pages\Washington.cs" />
+    <Compile Include="Pages\Nebraska.cs" />
+    <Compile Include="Pages\NorthCarolina.cs" />
     <Compile Include="Pages\States.cs" />
     <Compile Include="Pages\Maine.cs" />
     <Compile Include="Pages\State.cs" />

@@ -161,7 +161,7 @@ namespace Autoclave.Pages
 
                 if (lottery.lotteryName.Equals("florida_lotto"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[2];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[12];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -182,7 +182,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_luckymoney"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[4];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[14];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -204,7 +204,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_fantasy5"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[5];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[15];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -223,7 +223,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick5day"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[6];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[16];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -243,7 +243,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick5eve"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[7];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[17];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -263,7 +263,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick4day"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[8];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[18];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -282,7 +282,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick4eve"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[9];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[19];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -301,7 +301,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick3day"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[10];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[20];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -319,7 +319,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick3eve"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[11];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[21];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -337,7 +337,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick2day"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[12];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[22];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()
@@ -354,7 +354,7 @@ namespace Autoclave.Pages
                 }
                 else if (lottery.lotteryName.Equals("florida_pick2eve"))
                 {
-                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[13];
+                    HtmlNode node = Florida.DocumentNode.SelectNodes("//p[contains(@class,'wnBalls')]")[23];
                     HtmlNode[] nodes = node.SelectNodes(".//span[contains(@class,'balls')]").ToArray();
 
                     return new LotteryNumber()

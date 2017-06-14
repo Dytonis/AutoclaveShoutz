@@ -16,6 +16,8 @@ namespace DataEntryAPI
             Console.WriteLine(json);
             Console.WriteLine();
 
+            request.rawJsonPayload = json;
+
             using (HttpClient client = new HttpClient())
             {
                 Console.WriteLine("POST ..." + "http://www.lotteryhub.com/api/services/tw_data_importer.php");
@@ -29,6 +31,7 @@ namespace DataEntryAPI
                     string response = await httpResponse.Content.ReadAsStringAsync();
 
                     EntryImporterWebResponse Concrete = JsonConvert.DeserializeObject<EntryImporterWebResponse>(response);
+                    Concrete.response = httpResponse;
 
                     return Concrete;
                 }
@@ -46,6 +49,7 @@ namespace DataEntryAPI
     {
         public string data_key { get; set; }
         public EntryImporterDrawData[] draw_data { get; set; }
+        public string rawJsonPayload { get; set; }
 
         public class EntryImporterDrawData
         {
@@ -61,5 +65,6 @@ namespace DataEntryAPI
     {
         public string success { get; set; }
         public string message { get; set; }
+        public HttpResponseMessage response { get; set; }
     }
 }
